@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/header.css"%}">
+    <link rel="stylesheet" href="{% static "css/navbar.css"%}">
+    <link rel="stylesheet" href="{% static "css/banner.css"%}">
+    <link rel="stylesheet" href="{% static "css/loadingScreen.css"%}">
+    <link rel="stylesheet" href="{% static "css/product.css"%}">
+    <link rel="stylesheet" href="{% static "css/footer.css"%}">
+    <link rel="stylesheet" href="{% static "css/all.min.css"%}">
+    <link rel="stylesheet" href="{% static "css/login.css"%}">
+    <script src="{% static "js/jquery-3.6.0.js"%}"></script>
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/svg-with-js.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script> -->
+    <title>Document</title>
+</head>
+<script>$(window).on("load",function(){$("#loading-screen").fadeOut(400);});</script>
+<body>
+    <div id="loading-screen">
+    <div class="loader"><div class="cell d-0"></div><div class="cell d-1"></div><div class="cell d-2"></div><div class="cell d-1"></div><div class="cell d-2"></div><div class="cell d-2"></div><div class="cell d-3"></div><div class="cell d-3"></div><div class="cell d-4"></div></div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </symbol>
+      </svg>
+    <div class="alerts">
+        {%for message in messages%}
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div>
+            {{message}}
+        </div>
+    </div>
+        {%endfor%}
+    </div>
+    <div class="headerMain">
+        <div class="header">
+            <div class="headerLogo">
+                <a href="/">
+                    <img src="{% static "assets/img/obkids.png"%}" alt="">  
+                </a>
+            </div>
+            <div class="searchBar">
+                <input type="text" placeholder="Islän zadyňyzy gözläň...">
+                <i class="fas fa-search"></i>
+            </div>
+            <div class="account">
+                <div class="wishlist">
+                    <a href="/wishlist.html">
+                        <i class="wishlist-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                            <g id="SVGRepo_iconCarrier"> <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                            </svg>
+                        </i>
+                        Halanlarym
+                    </a>
+                </div>
+                <div class="login" onmouseover="ulanyjy_maglumaty_gorkez()" onmouseleave="ulanyjy_maglumaty_yap()">
+                    {% if user.is_authenticated %}<a href="/">{% else %}<a href="/login/">{% endif %}
+                        <i class="login-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="User / User_03">
+                            <path id="Vector" d="M18 19C18 16.7909 15.3137 15 12 15C8.68629 15 6 16.7909 6 19M12 12C9.79086 12 8 10.2091 8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8C16 10.2091 14.2091 12 12 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            </svg>
+                        </i>
+                        {% if user.is_authenticated %}
+                            Hasabym
+                        {% else %}
+                            Giriş
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="cart">
+                    <a href="/cart">
+                        <i class="cart-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 3H4.5L6.5 17H17C18.1046 17 19 17.8954 19 19C19 20.1046 18.1046 21 17 21C15.8954 21 15 20.1046 15 19M9 5H21.0001L19.0001 11M18 14H6.07141M11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </i>
+                        Sebedim
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <nav class="mega-menu" id="mega-menu">
+        <ul class="menu" id="menu">
+            <!-- <li><a href="#" class="header-menu">Esasy</a></li> -->
+            {% for menu in menu %}
+            <li class="has-submenu">
+                <a href="/category.html" class="header-menu">{{menu.name}}</a>
+                <a class="header-menu-span">{{menu.name}}</a>
+                {%for categorys in category%}
+                    {%if categorys.menu is not null and forloop.first%}
+                <ul class="submenu">
+                    {%for cat in category%}
+                        {% if cat.menu.id == menu.id%}
+                    <li><a href="/category/{{cat.id}}/{{cat.name}}">{{cat.name}}</a></li>
+                        {%endif%}
+                    {%endfor%}
+                </ul>
+                    {%endif%}
+                {%endfor%}
+            </li>
+            {%endfor%}
+        </ul>
+    </nav>
+
+<section> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> <span></span> 
+
+   <div class="signin"> 
+
+    <div class="content"> 
+
+     <h2>Agza Bol</h2> 
+
+     <form method="POST" class="form" name="signup" onsubmit="return validateSignup()">
+        {% csrf_token %}
+        <div class="form"> 
+        <div class="inputBox"> 
+            {{register.phone}}
+            <i>Telefon belgi</i> 
+            <i style="color: rgb(143, 143, 143);margin-top: 17px;font-size: 16px;">+993</i>
+            <p class="invalid-data" id="phone_error">Telefon belgi nädogry</p>
+        </div>
+
+         <div class="inputBox"> 
+          {{register.username}}
+          <i>Ulanyjy ady</i> 
+          <p class="invalid-data" id="username_error">Ulanyjy adyňyzy ýazyň</p>
+         </div> 
+
+         <div class="inputBox"> 
+          {{register.password1}} 
+          <i>Açar sözi</i> 
+          <p class="invalid-data" id="password_error">Açar sözi azyndan 6 simwol bolmaly</p>
+         </div> 
+
+         <div class="inputBox"> 
+            {{register.password2}} 
+            <i>Açar sözi tassyklan</i> 
+            {% comment %} <p class="invalid-data" id="password_error">Açar sözi azyndan 6 simwol bolmaly</p> {% endcomment %}
+        </div> 
+
+         <div class="links"> 
+             <a href=""></a>
+             <a href="/login/">Giriş</a> 
+         </div> 
+
+         <div class="inputBox"> 
+          <input type="submit" class="signup" value="Agza Bol"> 
+         </div> 
+
+        </div> 
+    </form>
+
+    </div> 
+
+   </div> 
+
+  </section> <!-- partial --> 
+    
+  <footer>
+{%for abous in abous%} 
+    {%if forloop.last%}
+    <div class="contact-info">
+        <a href="/">
+            <img src="" alt="">
+        </a>
+        <p>Telefon belgimiz: +993{{abous.phone}}</p>
+        <p>E-Poçtamyz: {{abous.email}} </p>
+        <p>Salgymyz: {{abous.adress}} </p>
+    </div>
+    {%endif%}
+    {%endfor%}
+    
+    <div class="customer-support">
+        <a href="/help">Kömek</a>
+        <a href="/exchange">Çalşyp bermek</a>
+        <a href="/contact">Habarlaşmak</a>
+    </div>
+
+    <div class="about-us">
+        <a href="">
+            <p>Biz hakda:{%for abous in abous%} {{abous.description}} {%endfor%}</p>
+        </a>
+    </div>
+
+    <div class="product-categories">
+        {%for men in menu%}
+            <a href="/menu/{{men.id}}/{{men.name}}">{{men.name}}</a>
+        {%endfor%}
+    </div>
+
+    <div class="shipping-and-delivery">
+        <a href="/cargofee">
+            <p>Ýol tölegleri: Siziň ýaşaýan ýeriňize eltip bermek hyzmatynyň tölegleri bu sahypada ýerleşdirilendir.</p>
+        </a>
+    </div>
+
+    <div class="social-media">
+        <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+
+    <div class="payment-options">
+        <p>Kabul edilýän töleg görnüşleri: Nagt töleg, Terminal töleg</p>
+    </div>
+
+    <div class="copyright">
+        <a href="/">
+            <img src="" alt="">
+        </a>
+        <span>&copy;2023-2024 Hemme hukuklarymyz goraglydyr</span>
+    </div>
+</footer>
+
+<div id="scrolltop">
+    <a class="top-button" href="#top"><i class="fas fa-arrow-up"></i> Ýokaryk</a>
+</div>
+
+
+    <div class="mobile-nav ng-star-inserted">
+        <div class="mobile-nav-menu">
+            <button onclick="location='/'" id="btnhomeMenu" class="ng-star-inserted">
+                <i class="nav-home-image"></i>
+                Esasy
+            </button>
+            <button id="btncategoriesMenu" class="ng-star-inserted">
+                <i class="nav-category-image" id="navCat"></i>
+                Kategoriyalar
+            </button>
+            <button onclick="location='/wishlist'" id="btnwishlistMenu" class="ng-star-inserted">
+                <i class="nav-wishlist-image" id="navWish"></i>
+                 Halanlarym
+            </button>
+            <button onclick="location='/cart'" id="btncartMenu" class="ng-star-inserted">
+                <i class="nav-cart-image"></i>
+                 Sebedim
+            </button>
+            <button onclick="location='/login'" id="btnorderMenu" class="ng-star-inserted"  style="color: #96e6a1;">
+                <i class="nav-user-image active" id="navUser"></i>
+                Giriş
+            </button>
+        </div>
+    </div>
+    <script>
+        $('#categoryOut').click(function(){
+            document.getElementById('catMobile').classList.remove('active')
+            document.getElementById('navUser').classList.add('active')
+            document.getElementById('btnorderMenu').style.color = '#96e6a1'
+            document.getElementById('btncategoriesMenu').style.color ="#6f6f6f"
+            document.getElementById('navCat').classList.remove('active')
+        })
+        $('#btncategoriesMenu').click(function(){
+            document.getElementById('catMobile').classList.add('active')
+            document.getElementById('navUser').classList.remove('active')
+            document.getElementById('btnorderMenu').style.color = '#6f6f6f'
+            document.getElementById('navCat').classList.add('active')
+            document.getElementById('btncategoriesMenu').style.color ="#96e6a1"
+        })
+    </script>
+<script type="text/javascript" src="{% static "js/mobileCat.js"%}"></script>
+<script type="text/javascript" src="{%static "js/slider.js"%}"></script>
+<script type="text/javascript" src="{%static "js/input.js"%}"></script>
+<script type="text/javascript" src="{% static "js/search.js"%}"></script>
+<script type="text/javascript" src="{%static "js/scrolltotop.js"%}"></script>
+<script type="text/javascript" src="{%static "js/menu-bar.js"%}"></script>
+<script type="text/javascript" src="{%static "js/signup.js"%}"></script>
+</body>
+</html>

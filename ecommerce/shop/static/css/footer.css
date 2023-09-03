@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400&family=Quicksand:wght@700&display=swap');
+
+*{
+    font-family: 'Quicksand', sans-serif;
+}
+footer a::selection,
+footer input::selection,
+footer h2::selection,
+footer i::selection,
+footer p::selection,
+footer span::selection,
+footer img::selection,
+footer button::selection{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+footer{
+    background:#009432;
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: -20px;
+    text-align: center;
+    color: #fff;
+}
+
+.contact-info, .customer-support, .about-us, .product-categories,
+.privacy-policy, .terms-and-conditions, .shipping-and-delivery,
+.social-media, .payment-options, .newsletter-subscription{
+    margin-bottom: 10px;
+}
+.contact-info img{
+    width: 200px;
+}
+.contact-info p{
+    margin-right: 10px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.customer-support a{
+    margin-right: 10px;
+    color:#fff;
+    margin-left: 100px;
+}
+.customer-support a:hover{
+    text-decoration: underline;
+}
+
+.about-us p{
+    font-style: italic;
+    font-weight: 600;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.product-categories a{
+    margin-right: 10px;
+    color:#fff;
+}
+.product-categories a:hover{
+    text-decoration: underline;
+}
+.privacy-policy a{
+    color: #fff;
+}
+.privacy-policy a:hover{
+    text-decoration: underline;
+}
+.terms-and-conditions a{
+    color: #fff;
+}
+.terms-and-conditions a:hover{
+    text-decoration: underline;
+}
+.shipping-and-delivery p{
+    margin-right: 10px;
+    color: #fff;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 600;
+}
+
+.social-media a{
+    margin-right: 10px;
+    color: #fff;
+}
+.social-media a:hover{
+    text-decoration: underline;
+}
+.payment-options p{
+    margin:5px 0 ;
+    font-weight: 600;
+}
+
+.newsletter-subscription p{
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+.newsletter-subscription input[type='number']{
+    padding: 5px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    transition: all 0.3s ease-in-out;
+}
+.newsletter-subscription button{
+    padding: 5px 10px;
+    background: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 1px rgba(255, 255, 255, 0) solid;
+    transition: all 0.3s ease-in-out;
+}
+.newsletter-subscription button:hover{
+    color: #fff;
+    background: #009432;
+    border: 1px #fff solid;
+}
+.copyright{
+    margin-top: 20px;
+    display: inline-flex;
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.copyright img{
+    width: 150px;
+}
+.copyright span{
+    width: 100%;
+}
+
+footer .fab {
+    font-size: 25px;
+    transition: all 0.3s ease-in-out;
+}
+footer a:hover .fa-whatsapp{
+    color: #00ff9d;
+}
+
+footer a:hover .fa-instagram{
+    color: #ff00c8;
+}
+html {
+    scroll-behavior: smooth;
+}
+   
+#scrolltop {
+ display: block;
+ visibility: visible;
+ opacity: 1;
+ transition: visibility 0.3s, opacity 0.5s,box-shadow 0.3s ease-in;
+ position: fixed;
+ height: 40px;
+ bottom: 20px;
+ right: 20px;
+ background: #fff;
+ z-index: 9999;
+ box-shadow: 2px 0 6px 4px rgba(0, 0, 0, 0.192);
+ color: #009432;
+ border-radius: 40px;
+}
+#scrolltop:hover{
+    box-shadow: 2px 0 6px 4px #d4fc79;
+    color: #d4fc79;
+}
+
+#scrolltop:hover a{
+    color: #d4fc79;
+}
+#scrolltop a{
+    transition: color 0.3s ease-in-out;
+    position: relative;
+    top: 23%;
+}
+#scrolltop a i{
+    position: relative;
+    top: 0;
+    transition: top 0.3s ease-in-out;
+}
+.top-button {
+ text-decoration: none;
+ cursor: pointer;
+ padding: 30px;
+ color: #222;
+}
+
+@media (min-width:280px) and (max-width:1023px){
+    footer{
+        margin: 0;
+        width: auto;
+    }
+    #scrolltop {
+        top: 20px;
+        height: 30px;
+        width: 100px;
+        right: 30%;
+    }
+    #scrolltop a i{
+        display: none;
+    }
+    .top-button {
+        padding-left: 20px;
+    }
+    .customer-support a{
+        margin-left: 0;
+    }
+    .copyright{
+        margin-bottom: 60px;
+    }
+}

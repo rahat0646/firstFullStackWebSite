@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Quicksand:wght@700&display=swap');
+
+
+nav a::selection,
+nav input::selection,
+nav h2::selection,
+nav i::selection,
+nav p::selection,
+nav span::selection,
+nav img::selection,
+nav button::selection{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+}
+
+.mega-menu{
+    width: 80%;
+    margin-left: 110px;
+    margin-top: -30px;
+    border-bottom: 2px solid rgba(100, 100, 100, 0.137);
+}
+
+.mega-menu ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    /* -ms-overflow-style: none;  IE and Edge */
+    /* scrollbar-width: none;  Firefox */
+    scroll-behavior: smooth;
+    text-align: center;
+}
+
+.mega-menu li{
+    display: inline-block;
+    position: relative;
+}
+
+.mega-menu a{
+    display: block;
+    color: black;
+    transition: all 0.3s;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.mega-menu .submenu{
+    display: none;
+    width: 200px;
+    max-width: 400px;
+    height: auto;
+    flex-direction: row;
+    flex-wrap: wrap;
+    z-index: 9999;
+    position: absolute;
+    font-size: 13px;
+    transition: all 0.3s;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 2px 4px 10px 6px rgba(87, 87, 87, 0.178);
+    padding: 10px;
+}
+.mega-menu li .header-menu:hover{
+    color: #009432;
+    border-bottom: 2px solid #009432;
+}
+.mega-menu .has-submenu:hover .submenu{
+    display: flex;
+}
+.mega-menu .has-submenu .submenu a:hover{
+    text-decoration: underline;
+    color: #009432;
+}
+.mega-menu .has-submenu .header-menu-span{
+    display: none;
+    color: black;
+    transition: all 0.3s;
+    border-bottom: 2px solid rgba(0, 0, 0, 0);
+    font-family: 'Quicksand', sans-serif;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+
+@media screen and (max-width:1024px){
+    .mega-menu{
+        width: 90%;
+        margin-left: 5%;
+        margin-top: -20px;
+    }
+    .menu{
+        display: block;
+    }
+    .has-submenu .submenu{
+        position: static;
+        box-shadow: none;
+        font-size: 14px;
+        width: 210px;
+        border-radius: 0;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .mega-menu ul{
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        display: inline-flex;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        justify-content: unset;
+        align-items: unset;
+        overflow: scroll;
+        /* -ms-overflow-style: none;  IE and Edge
+        scrollbar-width: none;  Firefox */
+        scroll-behavior: smooth;
+        text-align: center;
+    }
+    .mega-menu li .header-menu:hover{
+        color: unset;
+        border-bottom:0px solid;
+    }
+    .mega-menu .has-submenu:hover .header-menu{
+        display: flex;
+    }
+    .mega-menu .has-submenu .header-menu a:hover{
+        text-decoration: none;
+        color: unset;
+    }
+    .mega-menu .has-submenu .header-menu{
+        display: block;
+    }
+    .mega-menu .has-submenu:hover .submenu{
+        display: none;
+    }
+}

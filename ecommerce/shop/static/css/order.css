@@ -1,0 +1,1085 @@
+.account-layout-container{
+    width:1200px;
+    margin:20px auto;
+    height:100%;
+    font-family: 'Poppins', cursive;
+    background:#fff
+}
+.account-layout-container .left{
+    float:left;
+    width:190px
+}
+.account-layout-container .right{
+    float:right;
+    width:990px;
+    min-height:250px;
+    border:#ededed;
+    box-sizing:border-box;
+    margin-bottom:20px
+}
+#account-layout-container .layout-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  #account-layout-container .layout-wrapper .section-user_info,
+  #account-layout-container .layout-wrapper .section-my_orders,
+  #account-layout-container .layout-wrapper .section-special_to_you,
+  #account-layout-container .layout-wrapper .section-my_account {
+    box-sizing: border-box;
+    padding: 12px 16px 8px 16px;
+    margin-bottom: 8px;
+    border: 1px solid #E6E6E6;
+    border-radius: 8px;
+  }
+  #account-layout-container .layout-wrapper .section-user_info p,
+  #account-layout-container .layout-wrapper .section-my_orders p,
+  #account-layout-container .layout-wrapper .section-special_to_you p,
+  #account-layout-container .layout-wrapper .section-my_account p,
+  #account-layout-container .layout-wrapper .section-user_info h4,
+  #account-layout-container .layout-wrapper .section-my_orders h4,
+  #account-layout-container .layout-wrapper .section-special_to_you h4,
+  #account-layout-container .layout-wrapper .section-my_account h4 {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    color: #333333;
+  }
+  #account-layout-container .layout-wrapper .section-user_info {
+    padding: 16px;
+  }
+  #account-layout-container .layout-wrapper .section-user_info p {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  #account-layout-container .layout-wrapper .section-my_orders h4,
+  #account-layout-container .layout-wrapper .section-special_to_you h4,
+  #account-layout-container .layout-wrapper .section-my_account h4 {
+    width: calc(100% + 16px);
+    border-bottom: 1px solid #E6E6E6;
+    margin: 0 0 8px -16px;
+    padding: 0 0 12px 16px;
+  }
+  #account-layout-container .layout-wrapper .section-my_orders {
+    height: 183px;
+  }
+  #account-layout-container .layout-wrapper .section-special_to_you {
+    height: 214px;
+  }
+  #account-layout-container .layout-wrapper .section-my_account {
+    min-height: 214px;
+  }
+  #account-layout-container .layout-wrapper h2 {
+    margin: 10px 0 7px 0;
+    font-size: 24px;
+    color: #333;
+    font-family: 'Poppins', cursive;
+  }
+  #account-layout-container .layout-item {
+    display: flex;
+    height: 38px;
+    align-items: center;
+    width: calc(100% + 10px);
+    position: relative;
+    margin: 0 0 1px -10px;
+    transition: 0.3s ease-in;
+  }
+  #account-layout-container .layout-item div.al-new-badge {
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    color: #fff;
+    margin-left: 3px;
+    position: relative;
+    bottom: 1px;
+    padding-bottom: 1px;
+    width: 26px;
+    height: 13px;
+    padding: 0 3px;
+    border-radius: 4px;
+    background-color: #d21313;
+  }
+  #account-layout-container .layout-item div.al-new-badge .new-text {
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+  }
+  #account-layout-container .layout-item .unseen-content-circle {
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #009432;
+    margin-left: 10px;
+    color: #fff;
+    font-size: 9px;
+    text-align: center;
+    line-height: 14px;
+  }
+  #account-layout-container .layout-item.active {
+    border-radius: 6px;
+    background-color: #96e6a18c;
+  }
+  #account-layout-container .layout-item.active span {
+    font-weight: 600;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  #account-layout-container .layout-item.active div {
+    color: #009432;
+  }
+  #account-layout-container .layout-item:hover {
+    transition: 0.3s ease-in;
+    border-radius: 6px;
+    background-color: #f3f3f3;
+  }
+  #account-layout-container .layout-item:hover i {
+    color: #009432;
+  }
+  #account-layout-container .layout-item:hover i.i-browsing-history-icon .path1::before {
+    color: #009432;
+  }
+  #account-layout-container .layout-item div {
+    margin-left: 10px;
+    width: 15px;
+    font-size: 14px;
+    color: #999;
+    margin-bottom: 3px;
+    display: flex;
+    margin-right: 10px;
+    justify-content: center;
+  }
+  #account-layout-container .layout-item i.i-my-reviews,
+  #account-layout-container .layout-item i.i-credit-card-filled,
+  #account-layout-container .layout-item i.i-mail-filled,
+  #account-layout-container .layout-item i.i-discount {
+    padding-top: 2px;
+  }
+  #account-layout-container .layout-item i.i-user-info {
+    padding-bottom: 2px;
+  }
+  #account-layout-container .layout-item i.i-mail-filled {
+    font-size: 12px;
+  }
+  #account-layout-container .layout-item i.i-diamond-fill,
+  #account-layout-container .layout-item i.i-my-wallet,
+  #account-layout-container .layout-item i.i-alarm {
+    font-size: 16px;
+  }
+  #account-layout-container .layout-item i.i-credit-card-filled,
+  #account-layout-container .layout-item i .i-exclamation-mark {
+    font-size: 11px;
+  }
+  #account-layout-container .layout-item i.i-discount {
+    font-size: 10px;
+  }
+  #account-layout-container .layout-item span {
+    display: block;
+    max-width: 145px;
+    padding: 10px 0;
+    color: #333;
+    font-size: 14px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #account-layout-container .layout-item span.path1,
+  #account-layout-container .layout-item span.path2 {
+    overflow: visible;
+    color: #999;
+    font-size: 18px;
+  }
+  #account-layout-container .layout-item span.path1::before {
+    color: #999;
+  }
+  #account-layout-container .layout-item-container {
+    box-sizing: border-box;
+    display: flex;
+    max-height: 31px;
+    width: calc(100% + 16px);
+    align-items: center;
+    position: relative;
+    padding: 8px 0;
+    margin: 0 -8px 0 -8px;
+    transition: 0.3s ease-in;
+  }
+  #account-layout-container .layout-item-container div.al-new-badge {
+    font-weight: 600;
+    display: inline-block;
+    text-align: center;
+    box-sizing: border-box;
+    color: #fff;
+    margin-left: 3px;
+    position: relative;
+    bottom: 1px;
+    width: 26px;
+    height: 13px;
+    padding: 0 3px 1px 3px;
+    border-radius: 4px;
+    background-color: #d21313;
+  }
+  #account-layout-container .layout-item-container div.al-new-badge .new-text {
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+  }
+  #account-layout-container .layout-item-container .unseen-content-circle {
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background-color: #009432;
+    margin-left: 10px;
+    color: #fff;
+    font-size: 9px;
+    text-align: center;
+    line-height: 14px;
+  }
+  #account-layout-container .layout-item-container.active {
+    border-radius: 4px;
+    background-color: #fff1e6;
+  }
+  #account-layout-container .layout-item-container.active span {
+    color: #009432;
+    font-weight: 600;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+  #account-layout-container .layout-item-container.active i {
+    color: #009432;
+  }
+  #account-layout-container .layout-item-container.active i.i-message-flat,
+  #account-layout-container .layout-item-container.active i.i-card-flat {
+    font-size: 11px;
+    margin-bottom: 0px;
+  }
+  #account-layout-container .layout-item-container.active i.i-tag-flat,
+  #account-layout-container .layout-item-container.active i.i-market-flat,
+  #account-layout-container .layout-item-container.active i.i-wallet-flat {
+    font-size: 13px;
+    margin-bottom: 0px;
+  }
+  #account-layout-container .layout-item-container i {
+    margin-left: 8px;
+    width: 15px;
+    font-size: 14px;
+    color: #333333;
+    display: flex;
+    margin-right: 12px;
+    justify-content: center;
+  }
+  #account-layout-container .layout-item-container i.i-address-flat,
+  #account-layout-container .layout-item-container i.i-question-flat,
+  #account-layout-container .layout-item-container i.i-message-flat,
+  #account-layout-container .layout-item-container i.i-card-flat,
+  #account-layout-container .layout-item-container i.i-basket-flat,
+  #account-layout-container .layout-item-container i.i-diamond-flat,
+  #account-layout-container .layout-item-container i.i-bell-flat,
+  #account-layout-container .layout-item-container i.i-tag-flat,
+  #account-layout-container .layout-item-container i.i-market-flat,
+  #account-layout-container .layout-item-container i.i-wallet-flat,
+  #account-layout-container .layout-item-container i.i-time-flat,
+  #account-layout-container .layout-item-container i.i-user-flat,
+  #account-layout-container .layout-item-container i.i-question-flat,
+  #account-layout-container .layout-item-container i.i-address-flat,
+  #account-layout-container .layout-item-container i.i-cargo-flat,
+  #account-layout-container .layout-item-container i.i-review-flat,
+  #account-layout-container .layout-item-container i.i-document-flat {
+    width: 14px;
+    height: 14px;
+  }
+  #account-layout-container .layout-item-container i.i-address-flat,
+  #account-layout-container .layout-item-container i.i-question-flat {
+    font-size: 15px;
+  }
+  #account-layout-container .layout-item-container i.i-message-flat {
+    margin-top: 2px;
+    font-size: 11px;
+  }
+  #account-layout-container .layout-item-container i.i-card-flat {
+    margin-top: 2px;
+    font-size: 11px;
+  }
+  #account-layout-container .layout-item-container i.i-basket-flat {
+    margin-bottom: 2px;
+  }
+  #account-layout-container .layout-item-container i.i-bell-flat {
+    margin-bottom: 2px;
+  }
+  #account-layout-container .layout-item-container i.i-tag-flat,
+  #account-layout-container .layout-item-container i.i-market-flat,
+  #account-layout-container .layout-item-container i.i-wallet-flat {
+    font-size: 13px;
+  }
+  #account-layout-container .layout-item-container i.i-document-flat,
+  #account-layout-container .layout-item-container i.i-time-flat {
+    margin-bottom: 1px;
+  }
+  #account-layout-container .layout-item-container i.i-user-flat {
+    margin-bottom: 2px;
+  }
+  #account-layout-container .layout-item-container i.i-question-flat {
+    margin-bottom: 2px;
+  }
+  #account-layout-container .layout-item-container i.i-address-flat {
+    margin-bottom: 3px;
+  }
+  #account-layout-container .layout-item-container i.i-cargo-flat {
+    margin-bottom: 2px;
+  }
+  #account-layout-container .layout-item-container i.i-review-flat {
+    margin-bottom: 2px;
+  }
+  #account-layout-container .layout-item-container:hover {
+    transition: 0.3s ease-in;
+    border-radius: 4px;
+    background-color: #fff1e6;
+  }
+  #account-layout-container .layout-item-container span {
+    display: block;
+    max-width: 145px;
+    color: #333;
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #009432;
+    border-radius: 3px;
+    float: left;
+    margin: 10px 0;
+    padding: 12px 0 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper:hover {
+    background-color: #009432;
+    color: white;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper:hover i,
+  #account-layout-container .sowdayol-assistant-wrapper:hover h3,
+  #account-layout-container .sowdayol-assistant-wrapper:hover p {
+    color: white;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper i {
+    font-size: 25px;
+    color: #009432;
+    margin-bottom: 3px;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper h3 {
+    font-size: 14px;
+    font-weight: 600;
+    color: #009432;
+    line-height: 1;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper p {
+    font-size: 12px;
+    color: #999;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper-new {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    background-color: #FEF4EB;
+    border-radius: 3px;
+    float: left;
+    padding: 16px 0 10px;
+    height: 98px;
+    cursor: pointer;
+    transition: all 0.3s ease-in;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper-new:hover {
+    background-color: #009432;
+    color: white;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper-new:hover i,
+  #account-layout-container .sowdayol-assistant-wrapper-new:hover h3,
+  #account-layout-container .sowdayol-assistant-wrapper-new:hover p {
+    color: white;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper-new i {
+    font-size: 25px;
+    color: #009432;
+    margin-bottom: 8px;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper-new h3 {
+    color: #009432;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+  }
+  #account-layout-container .sowdayol-assistant-wrapper-new p {
+    font-size: 12px;
+    line-height: 16px;
+    color: #666666;
+  }
+  .account-layout-container .right {
+    float: right;
+    width: 990px;
+    min-height: 250px;
+    border: #ededed;
+    box-sizing: border-box;
+    margin-bottom: 20px;
+}
+#member-gw-user-information .user-account-info {
+    border-radius: 6px;
+    border: solid 1px #e2e2e2;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 15px;
+    font-family: 'Josefin Sans', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+    position: relative;
+}
+#member-gw-user-information .user-forms {
+    display: flex;
+    border-radius: 6px;
+    border: solid 1px #e2e2e2;
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+}
+#member-gw-user-information .user-forms .form-section {
+    width: 100%;
+    padding: 20px;
+}
+#member-gw-user-information .ty-font-header-sm {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.ty-font-w-bold {
+    font-weight: 700;
+}
+.ty-color-orange {
+    color: #009432;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-stretched {
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-stretched div:first-child:nth-last-child(2), #member-gw-user-information .ty-form .ty-form-group.form-group-stretched div:first-child:nth-last-child(2) ~ div {
+    width: calc(50% - 10px);
+}
+.ty-flex-column {
+    flex-direction: column;
+}
+.ty-font-md {
+    font-size: 14px;
+    line-height: 18px;
+}
+.ty-display-flex {
+    display: flex;
+}
+.ty-color-black {
+    color: #333;
+}
+#member-gw-user-information .ty-form .ty-form-group .ty-input-w label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+}
+.ty-input-w .ty-text {
+    height: calc(1em + 4px*1 + 0px);
+}
+#member-gw-user-information .ty-form .ty-form-group .ty-input.ty-textbox, #member-gw-user-information .ty-form .ty-form-group .ty-input.ty-select {
+    background-color: #fbfbfb;
+    border: solid 1px #e6e6e6;
+}
+#member-gw-user-information .ty-form .ty-form-group .ty-bordered {
+    border-radius: 6px;
+}
+#member-gw-user-information .ty-form .ty-form-group .ty-input {
+    height: 44px;
+}
+.ty-input-w .ty-input.ty-input-large {
+    padding: 10px 12px;
+}
+.ty-input-w .ty-input {
+    font: inherit;
+    box-sizing: border-box;
+    width: 100%;
+    transition: all .3s ease;
+    outline: 0;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-stretched div:first-child:nth-last-child(1) {
+    width: 100%;
+}
+#member-gw-user-information .ty-form .ty-form-group .ty-input-w label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 600;
+}
+#member-gw-user-information .user-account-info .my-account-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2a2a2a;
+    flex: 1;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-stretched.phone-input .ty-input-w:first-child {
+    width: 120px!important;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-stretched div:first-child:nth-last-child(1) {
+    width: 100%;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-stretched.phone-input .ty-input-w:nth-child(2) {
+    width: 55%;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-stretched.phone-input button {
+    width: 20%;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-stretched .update-phone-number {
+    height: 44px;
+    font-size: 14px;
+    border-radius: 6px;
+    border-color: transparent;
+    background-color: #009432;
+    font-family: 'Josefin Sans', sans-serif;
+    color: #ffffff;
+    cursor: pointer;
+    margin-top: 25px;
+    pointer-events: none;
+    opacity: 0.4;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-stretched {
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+.form-group-stretched .ty-input {
+    background-color: #fbfbfb;
+    border: solid 1px #e6e6e6;
+    width: 100%;
+    border-radius: 6px;
+    height: 44px
+}
+
+
+#member-gw-user-information .user-forms .divider {
+    border-left: solid 1px #e2e2e2;
+}
+#member-gw-user-information .ty-form .ty-button {
+    margin-bottom: 10px;
+}
+#member-gw-user-information .ty-form .ty-button {
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 8px;
+}
+.ty-button:not(:disabled).ty-secondary {
+    background: 0 0;
+    border-color: #009432;
+    color: #009432;
+}
+.ty-button.ty-input-large {
+    line-height: 26px;
+}
+.ty-button {
+    width: 100%;
+    cursor: pointer;
+    font: inherit;
+}
+.ty-transition {
+    transition: all .2s ease;
+}
+.ty-button:not(:disabled).ty-secondary:hover {
+    background: #009432;
+    color: #fff;
+}
+#member-gw-user-information .ty-form .ty-button {
+    font-size: 14px;
+    border-radius: 6px;
+    padding: 8px;
+  }
+  #member-gw-user-information .ty-form .ty-button {
+    margin-bottom: 10px;
+  }
+  #member-gw-user-information .user-forms .form-section {
+    width: 100%;
+    padding: 20px;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-column {
+    flex-direction: column;
+}
+#member-gw-user-information .password-wrapper {
+    position: relative;
+    display: flex;
+}
+
+#member-gw-user-information .password-wrapper .password-input-area {
+    flex: 1;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-column.form-password .ty-mgt-1 span {
+    height: unset;
+}
+#member-gw-user-information .ty-form .ty-form-group.form-group-column.form-password .ty-mgt-1 span {
+    height: unset;
+}
+.account-layout-container{
+  font-family: 'Josefin Sans', sans-serif;
+}
+#member-gw-user-information .ty-form .ty-form-group .name{
+  background-color: #fbfbfb;
+  border: solid 1px #e6e6e6;
+  height: 44px;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font: inherit;
+  box-sizing: border-box;
+  transition: all .3s ease;
+  outline: 0;
+}
+#member-gw-user-information .ty-form .ty-form-group .last_name{
+  background-color: #fbfbfb;
+  border: solid 1px #e6e6e6;
+  height: 44px;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font: inherit;
+  box-sizing: border-box;
+  transition: all .3s ease;
+  outline: 0;
+}
+#member-gw-user-information .ty-form .ty-form-group .email{
+  background-color: #fbfbfb;
+  border: solid 1px #e6e6e6;
+  height: 44px;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font: inherit;
+  box-sizing: border-box;
+  transition: all .3s ease;
+  outline: 0;
+}
+#member-gw-user-information .ty-form .ty-form-group .number{
+  background-color: #fbfbfb;
+  border: solid 1px #e6e6e6;
+  height: 44px;
+  border-radius: 6px;
+  padding: 10px 12px;
+  font: inherit;
+  box-sizing: border-box;
+  transition: all .3s ease;
+  outline: 0;
+}
+.birthdate {
+  background-color: #fbfbfb;
+  border: solid 1px #e6e6e6;
+  width: 100%;
+  border-radius: 6px;
+  height: 44px;
+  padding: 10px 12px;
+  font: inherit;
+  box-sizing: border-box;
+  transition: all .3s ease;
+  outline: 0;
+}
+.ty-button.ty-input-large {
+  margin-bottom: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  padding: 8px;
+  border-color: #009432;
+  color: #009432;
+}
+.ty-button.ty-input-large:hover{
+  background: #009432;
+  color: #fff;
+}
+#account-layout-container .layout-item.active div {
+  color: #009432;
+}
+#account-layout-container .layout-item div {
+  margin-left: 10px;
+  width: 15px;
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 3px;
+  display: flex;
+  margin-right: 10px;
+  justify-content: center;
+  padding-top: 2px;
+}
+#account-layout-container .layout-item:hover div {
+  color: #009432;
+}
+.ty-link-button:not(.ty-disabled).ty-notr {
+  text-decoration: none;
+  color: #666;
+}
+.addresses-page-header-add-address {
+  cursor: pointer;
+}
+.addresses-page-header-add-address::before {
+  content: '+';
+  font-size: 30px;
+  vertical-align: middle;
+  margin-right: 7px;
+  color: #009432;
+}
+.addresses-page-header-add-address:hover span{
+  text-decoration: underline;
+}
+.address-page-content {
+  width: 100%;
+  border: solid 1px #e2e2e2;
+  box-sizing: border-box;
+  padding: 0 20px;
+  flex-wrap: wrap;
+  margin-top: 15px;
+  border-radius: 6px;
+  box-shadow: 0 1px 1px 0 rgb(0 0 0%);
+  background-color: #fff;
+  min-height: 460px;
+  justify-content: space-between;
+}
+.addresses-page-no-content {
+  width: 100%;
+  border: solid 1px #e2e2e2;
+  height: 410px;
+  margin-top: 15px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.addresses-page-no-content section {
+  margin-top: 15px;
+  max-width: 600px;
+  line-height: 28px;
+}
+
+.ty-modal{
+  top: 0;
+  left: 0;
+  background-color: rgba(102,102,102,.4);
+  z-index: 99999;
+  overflow: scroll;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+.ty-modal .ty-modal-content {
+  background: #fff;
+  margin: auto;
+}
+.user-address-modal {
+  width: 520px;
+  border-radius: 6px;
+  max-height: 95vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.ty-modal .ty-modal-content a {
+  cursor: pointer;
+  position: absolute;
+  top: 190px;
+  right: 440px;
+}
+
+.ty-modal .ty-modal-content .ty-modal-header {
+  border-bottom: solid 1px #e6e6e6;
+  padding: 14px 20px;
+}
+.ty-font-lg {
+  font-size: 18px;
+  line-height: 22px;
+}
+.ty-color-black {
+  color: #333;
+}
+.user-address-modal .modal-wrapper {
+  width: 300%;
+  display: flex;
+  position: relative;
+  transition: 1s;
+}
+.user-address-modal .modal-wrapper > div {
+  width: calc(100% / 3);
+}
+.address-form {
+  margin: 15px 20px 20px;
+  box-sizing: border-box;
+}
+.ty-flex-row {
+  flex-direction: row;
+}
+.ty-display-flex {
+  display: flex;
+}
+.address-form .ty-form-group .ty-input-w {
+  width: 50%;
+}
+.ty-input-w .ty-text {
+  height: calc(1em + 4px*1 + 0px);
+}
+.ty-font-w-bold {
+  font-weight: 700;
+}
+.ty-font-sm {
+  font-size: 12px;
+  line-height: 16px;
+}
+.address-form .ty-input-w .ty-input.ty-select, .address-form .ty-input-w .ty-input.ty-textbox {
+  height: 42px;
+}
+.address-form .ty-input-w .ty-input {
+  border-radius: 6px !important;
+}
+.ty-input-w .ty-input.ty-input-medium {
+  padding: 8px 10px;
+}
+.ty-input-w .ty-input {
+  font: inherit;
+  box-sizing: border-box;
+  width: 100%;
+  transition: all .3s ease;
+  outline: 0;
+}
+.ty-select .ty-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 20px);
+  margin-top: 4px;
+}
+.ty-input-w .ty-text {
+  height: calc(1em + 4px*1 + 0px);
+}
+.ty-bg-beige {
+  background-color: #fbfbfb;
+}
+.ty-bordered {
+  border: solid 1px #e6e6e6;
+}
+.ty-display-flex {
+  display: flex;
+}
+.address-form .ty-input-w {
+  margin-bottom: 5px;
+}
+.address-form .ty-input-w .ty-input {
+  border-radius: 6px !important;
+}
+.ty-input-w .ty-input {
+  font: inherit;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px 8px;
+  transition: all .3s ease;
+  outline: 0;
+}
+.ty-textarea {
+  resize: none;
+  height: auto;
+  font: inherit;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 5px 8px;
+  transition: all .3s ease;
+  outline: 0;
+  background-color: #fbfbfb;
+  border: solid 1px #e6e6e6;
+}
+.ty-textarea:focus{
+  background-color: #fbfbfb;
+  border: solid 1px #e6e6e6;
+}
+#account-layout-container .layout-item:hover path {color: #009432;fill:#009432}
+
+.ty-textarea:focus:not(:disabled), .ty-textbox:focus:not(:disabled) {
+  background-color: #fff;
+  border: solid 1px #999;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
+}
+.address-form .ty-form-group .ty-button {
+  margin-top: 6px;
+  border-radius: 6px;
+  height: 48px;
+  font-size: 18px;
+  z-index: 5;
+}
+.ty-button:not(:disabled).ty-primary:hover {
+  background: #ff9642;
+  border-color: #ff9642;
+}
+.ty-button:not(:disabled).ty-primary {
+  background: #009432;
+  border-color: #009432;
+  color: #fff;
+}
+.addresses-page-content-box {
+  height: 232px;
+  border: solid 1px #e2e2e2;
+  border-radius: 3px;
+  margin-top: 15px;
+  margin-bottom: 5px;
+  flex: 0 31%;
+  position: relative;
+  overflow: hidden;
+}
+.addresses-page-content-box .addresses-page-content-box-header {
+  background-color: #fafafa;
+  border-bottom: solid 1px #e2e2e2;
+  height: 42px;
+  padding: 0 15px;
+  align-items: center;
+  justify-content: space-between;
+}
+.addresses-page-content-box .address-page-content-box-body {
+  margin: 5px 15px;
+}
+.addresses-page-content-box .address-page-content-box-body span {
+  line-height: 24px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.addresses-page-content-box .address-page-content-box-actions {
+  align-items: center;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  right: 15px;
+}
+.ty-link-button:not(.ty-disabled).ty-notr {
+  text-decoration: none;
+  color: #666;
+}
+.ty-link-button {
+  cursor: pointer;
+  font-size: 12px;
+  line-height: 16px;
+}
+.addresses-page-content-box .address-page-content-box-actions .address-page-content-box-actions-delete:hover span {
+  text-decoration: underline;
+}
+.ty-link-button:not(.ty-disabled).ty-notr:hover {
+  color: #999;
+}
+.addresses-page-content-box .address-page-content-box-actions .address-page-content-box-actions-delete svg {
+  margin-right: 6px;
+}
+.addresses-page-content-box .address-page-content-box-actions .ty-button {
+  width: 120px;
+}
+.ty-button:not(:disabled).ty-secondary {
+  background: 0 0;
+  border-color: #009432;
+  color: #009432;
+}
+.ty-secondary a{
+  color: #009432;
+}
+.ty-secondary:hover a{
+  color: #fff;
+}
+
+.ty-button {
+  cursor: pointer;
+  padding: 6px 10px;
+  font: inherit;
+  font-size: 14px;
+  line-height: 18px;
+}
+.ty-bordered {
+  border: solid 1px #e6e6e6;
+  border-radius: 3px;
+}
+.orders-list .orders .order-pro-info .order-brand-name,
+.orders-list .orders .order-pro-info .order-pro-quantity{
+  color: #888;
+}
+.orders-list .orders .order-pro-info .order-pro-name{
+  color: #009432;
+}
+.orders-list .orders .order-pro-info .order-pro-description{
+  margin-top: 5px;
+  font-size: 12px;
+  display: -webkit-box;
+  max-width: 400px;
+  height: 56px;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #888;
+}
+.orders-list .orders{
+  margin-bottom: 20px;
+}
+.orders-list .orders .order-pro-image img{
+  border-radius: 20px;
+}
+
+.orders-list .orders .order-pro-info .order-pro-price{
+  color: #009432;
+}
+
+.orders-list .orders .order-date{
+  justify-content: center;
+  color: #009432;
+  text-align: center;
+}
+.user-menu-bar{
+  display: none;
+}
+.user-menu-close{
+  display: none;
+}
+.message{
+  height: 300px;
+}
+
+@media screen and (max-width:1023px){
+  .account-layout-container{
+    width: 100%;
+  }
+  .user-menu-bar{
+    display: block;
+    margin-right: 10px;
+  }
+  .user-menu-close{
+    display: block;
+    width: 15px;
+    height: 15px;
+  }
+  .account-layout-container .left{
+    position: fixed;
+    top: 0;
+    left: 0;
+    padding: 30px;
+    background: #fff;
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    left: -100%;
+    transition: left .3s;
+  }
+  .account-layout-container .left.active{
+    left: 0;
+  }
+  .account-layout-container .right{
+    float: left;
+    width: 100%;
+    position: relative;
+    left: 0;
+    margin-bottom: 100px;
+  }
+  .orders-list {
+    border-radius: 6px;
+    border: solid 1px #e2e2e2;
+    background-color: #ffffff;
+    box-shadow: 0 1px 4px 0 rgb(0 0 0 / 5%);
+  }
+}

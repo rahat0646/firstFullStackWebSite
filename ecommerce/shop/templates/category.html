@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/header.css"%}">
+    <link rel="stylesheet" href="{% static "css/navbar.css"%}">
+    <link rel="stylesheet" href="{% static "css/banner.css"%}">
+    <link rel="stylesheet" href="{% static "css/product.css"%}">
+    <link rel="stylesheet" href="{% static "css/loadingScreen.css"%}">
+    <link rel="stylesheet" href="{% static "css/footer.css"%}">
+    <link rel="stylesheet" href="{% static "css/all.min.css"%}">
+    <link rel="stylesheet" href="{% static "css/category.css"%}">
+    <link rel="stylesheet" href="{% static "css/slick/slick.css"%}">
+    <link rel="stylesheet" href="{% static "css/slick/slick-theme.css"%}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css"%}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+    <script src="{% static "js/jquery-3.6.0.js"%}"></script>
+    <script src="{% static "js/slick/slick.min.js"%}"></script>
+    <title>Document</title>
+    <style>
+        .all-product-container .product-container .product-list .product-card .product-info .prices{
+            height: 50px;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+        }
+        
+    </style>
+</head>
+<script>$(window).on("load",function(){$("#loading-screen").fadeOut(400);});</script>
+<body>
+    <div id="loading-screen">
+    <div class="loader"><div class="cell d-0"></div><div class="cell d-1"></div><div class="cell d-2"></div><div class="cell d-1"></div><div class="cell d-2"></div><div class="cell d-2"></div><div class="cell d-3"></div><div class="cell d-3"></div><div class="cell d-4"></div></div>
+    </div>
+    <div class="headerMain">
+        <div class="header">
+            <div class="headerLogo">
+                <a href="/">
+                    <img src="{% static "assets/img/obkids.png"%}" alt="">  
+                </a>
+            </div>
+            <div class="searchBar">
+                <form autocomplete="off" id="search-form" style="width: 100%;height: 100%;">
+                {% csrf_token %}
+                    <input type="text" id="search-input" placeholder="Islän zadyňyzy gözläň...">
+                    <button id="button-search"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="searchResult" id="results-box">
+                </div>
+            </div>
+            <div class="account">
+                <div class="wishlist">
+                    <a href="/wishlist">
+                        {%if wishlist.count > 0%}
+                        <div class="wishlist-count badge">{{wishlist.count}}</div>
+                        {%endif%}
+                        <i class="wishlist-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                            <g id="SVGRepo_iconCarrier"> <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                            </svg>
+                        </i>
+                        Halanlarym
+                    </a>
+                </div>
+                <div class="login" onmouseover="ulanyjy_maglumaty_gorkez()" onmouseleave="ulanyjy_maglumaty_yap()">
+                    {% if user.is_authenticated %}<a href="/">{% else %}<a href="/login/">{% endif %}
+                        <i class="login-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="User / User_03">
+                            <path id="Vector" d="M18 19C18 16.7909 15.3137 15 12 15C8.68629 15 6 16.7909 6 19M12 12C9.79086 12 8 10.2091 8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8C16 10.2091 14.2091 12 12 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            </svg>
+                        </i>
+                        {% if user.is_authenticated %}
+                            Hasabym
+                        {% else %}
+                            Giriş
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="cart">
+                    <a href="/cart">
+                        {%if cart.count > 0%}
+                        <div class="cart-count badge">{{cart.count}}</div>
+                        {%endif%}
+                        <i class="cart-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 3H4.5L6.5 17H17C18.1046 17 19 17.8954 19 19C19 20.1046 18.1046 21 17 21C15.8954 21 15 20.1046 15 19M9 5H21.0001L19.0001 11M18 14H6.07141M11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </i>
+                        Sebedim
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="categoryMobile" id="catMobile">
+        <i class="categoryExit" id="categoryOut"><?xml version="1.0" encoding="utf-8"?><svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#009432"/></svg> <span>Yza</span></i>
+        <nav class="MobileMegaMenu" id="mega-menu">
+            <ul class="MobileMenu" id="menu">
+                {% for menu in menu %}
+                <li class="MobileSubMenu">
+                    <div class="HeaderSub"><a href="/menu/{{menu.id}}/{{menu.name}}" class="MobileSubMenuHeader">{{menu.name}}</a></div> <i class="arrow" menuID="{{menu.id}}" id="Arrow{{menu.id}}"><?xml version="1.0" encoding="utf-8"?><svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#000000"/></svg></i>
+                    {%for categorys in category%}
+                        {%if categorys.menu is not null and forloop.first%}
+                    <ul class="MobileCat" menuID="{{menu.id}}" id="MobCat{{menu.id}}">
+                        {%for cat in category%}
+                            {% if cat.menu.id == menu.id%}
+                        <li><a href="/category/{{cat.id}}/{{cat.name}}">{{cat.name}}</a></li>
+                            {%endif%}
+                        {%endfor%}
+                    </ul>
+                        {%endif%}
+                    {%endfor%}
+                </li>
+                {%endfor%}
+            </ul>
+        </nav>
+    </div>
+    
+    <nav class="mega-menu" id="mega-menu">
+        <ul class="menu" id="menu">
+            {% for menu in menu %}
+            <li class="has-submenu">
+                <a href="/menu/{{menu.id}}/{{menu.name}}" class="header-menu">{{menu.name}}</a>
+                {%for categorys in category%}
+                    {%if categorys.menu is not null and forloop.first%}
+                <ul class="submenu">
+                    {%for cat in category%}
+                        {% if cat.menu.id == menu.id%}
+                    <li><a href="/category/{{cat.id}}/{{cat.name}}">{{cat.name}}</a></li>
+                        {%endif%}
+                    {%endfor%}
+                </ul>
+                    {%endif%}
+                {%endfor%}
+            </li>
+            {%endfor%}
+        </ul>
+    </nav>
+    <div class="breadcrumbs">
+        <a href="/" class="breadcrumbs__item">Esasy</a>
+        {%if categoryName is not null%}
+        <a href="/menu/{{menus.id}}/{{menus.name}}" class="breadcrumbs__item">{{menus.name}}</a> 
+        <a href="#" class="breadcrumbs__item is-active">{{categoryName}}</a> 
+        {%else%}
+        <a href="#"  class="breadcrumbs__item is-active">{{menus.name}}</a> 
+        {%endif%}
+    </div>
+    <div class="background-shadow" id="background_shadow" onclick="filterClose()"></div>
+    <div class="all-product-container container-fluid mt-2">
+        <div class="product-container row">
+            <div class="filter-show">
+                <button class="col-12" onclick="filter()"><i class=""><svg xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 4.6C3 4.03995 3 3.75992 3.10899 3.54601C3.20487 3.35785 3.35785 3.20487 3.54601 3.10899C3.75992 3 4.03995 3 4.6 3H19.4C19.9601 3 20.2401 3 20.454 3.10899C20.6422 3.20487 20.7951 3.35785 20.891 3.54601C21 3.75992 21 4.03995 21 4.6V6.33726C21 6.58185 21 6.70414 20.9724 6.81923C20.9479 6.92127 20.9075 7.01881 20.8526 7.10828C20.7908 7.2092 20.7043 7.29568 20.5314 7.46863L14.4686 13.5314C14.2957 13.7043 14.2092 13.7908 14.1474 13.8917C14.0925 13.9812 14.0521 14.0787 14.0276 14.1808C14 14.2959 14 14.4182 14 14.6627V17L10 21V14.6627C10 14.4182 10 14.2959 9.97237 14.1808C9.94787 14.0787 9.90747 13.9812 9.85264 13.8917C9.7908 13.7908 9.70432 13.7043 9.53137 13.5314L3.46863 7.46863C3.29568 7.29568 3.2092 7.2092 3.14736 7.10828C3.09253 7.01881 3.05213 6.92127 3.02763 6.81923C3 6.70414 3 6.58185 3 6.33726V4.6Z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg></i> Süzgüç</button>
+            </div>
+            <div class="filter-list col-8 col-lg-3 ml-md-4 mr-md-1 p-3" id="filter_list">
+                <div class="filter-close"><i class="ri-close-line" onclick="filterClose()"></i></div>
+                <div class="filter">
+                <div class="filter-brand">
+                    <div class="filter-name">
+                        <h4>Brend</h4>
+                    </div>
+                    <div class="filter-brand-search">
+                    <form id="filter-brand-search-form">
+                        <input type="text" id="filter-brand-search-input" placeholder="Gozleg">
+                    </form>
+                    </div>
+                    <script>
+                        $(document).ready(function() {
+                            $("#filter-brand-search-input").on("input", function() {
+                                var searchTerm = $(this).val().toLowerCase();
+                                $(".brand-name").each(function() {
+                                    var brandName = $(this).text().toLowerCase();
+                                    if (brandName.includes(searchTerm)) {
+                                        $(this).show();
+                                    } else {
+                                        $(this).hide();
+                                    }
+                                });
+                            });
+                        });
+                    </script>
+                    <div class="brands" id="results-brands">
+                        {%for brands in brand%}
+                        <label class="brand-name">{{brands.name}}
+                            <input type="checkbox" class="filter-checkbox" data-filter="brand" value="{{brands.id}}">
+                            <span class="checkmark"></span>
+                        </label>      
+                        {%endfor%}
+                    </div>
+                </div>
+                <div class="filter-price">
+                    <div class="filter-name">
+                        <h4>Baha aralygy</h4>
+                    </div>
+                    <div class="filter-price-inputs">
+                        <input type="number" class="min-price" id="minPrice" value="0"> <i>Iň pes</i> 
+                        <span>-</span>
+                        <input type="number" class="max-price" id="maxPrice" value="0"> <i>Iň uly</i> 
+                        <button type="submit" id="priceFilterBtn"><i class="fas fa-search"></i></button>
+                    </div>
+                    <label class="price-category">Hiç hili
+                        <input type="radio" checked="checked" name="price-range"  id="priceRadio" value="0-0">
+                        <span class="radiomark"></span>
+                    </label>
+                    <label class="price-category">0 - 100
+                      <input type="radio" name="price-range"  id="priceRadio" value="0-100">
+                      <span class="radiomark"></span>
+                    </label>
+                    <label class="price-category">100 - 1000
+                        <input type="radio" name="price-range"  id="priceRadio" value="100-1000">
+                        <span class="radiomark"></span>
+                    </label>
+                    <label class="price-category">1000 - 10000
+                        <input type="radio" name="price-range"  id="priceRadio" value="1000-10000">
+                        <span class="radiomark"></span>
+                    </label>
+                    <label class="price-category">10000 - 20000
+                        <input type="radio" name="price-range"  id="priceRadio" value="10000-20000">
+                        <span class="radiomark"></span>
+                    </label>
+                </div>
+                {% comment %} <div class="filter-sort" id="sort-form">
+                    <div class="filter-name">
+                        <h4>Tertip</h4>
+                    </div>
+                <form method="get">
+                    <label class="sort-category">Hic hili
+                        <input type="radio" class="sort" checked="checked" name="sort" value="0">
+                        <span class="radiomark"></span>
+                    </label>  
+                    <label class="sort-category">Arzandan gymmada
+                        <input type="radio" class="sort" name="sort" value="arzandan_gymmada">
+                        <span class="radiomark"></span>
+                    </label>  
+                    <label class="sort-category">Gymmatdan arzana
+                        <input type="radio" class="sort" name="sort" value="gymmatdan_arzana">
+                        <span class="radiomark"></span>
+                    </label>
+                </form>
+                </div> {% endcomment %}
+            </div>
+        </div>
+            <div class="product-list col-12 col-md-12 col-lg-8" id="filteredProducts">
+                <h2>{%if categoryName is not null%} Kategoriýa: {{categoryName}} {%else%} Menu: {{menus.name}}{%endif%}</h2>
+                <h4>Netije: {{title.count}} sany haryt</h4>
+                <p class="ajaxLoader">Yuklenyar..</p>
+                {%for pro in product%}
+                <div class="product-card col-5 col-md-4 col-lg-3">
+                    <div class="product-image active">
+                        <a href="/product/{{pro.id}}/{{pro.brand.name}}-{{pro.productName}}">
+                            <img src="/img/{{pro.image}}" alt="{{pro.brand.name}}{{pro.productName}}">
+                        </a>
+                    </div>
+                    {% if pro.id in added_to_wishlist_product_ids %}
+            {%for wishlist in wishlist%}
+            {%if pro.id is wishlist.product.id %}
+                <a pid={{pro.id}} pname={{pro.productName}} pbname={{pro.brand.name}} class="minus-wishlist">
+                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                    <svg width="40px" height="40px" viewBox="0 0 24 24" fill="#96e6a1" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> 
+                    <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#009432" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>
+                </a>
+            {%endif%}
+            {%endfor%}
+            {%else%}
+                <a pid={{pro.id}} pname={{pro.productName}} pbname={{pro.brand.name}} class="plus-wishlist">
+                    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                    <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> 
+                    <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#009432" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>
+                </a>
+            {%endif%}
+                    <div class="product-info">
+                        <a href="/product/{{pro.id}}/{{pro.brand.name}}-{{pro.productName}}">
+                            <h3 class="product-title">
+                                {{pro.brand.name}} {{pro.productName}}
+                            </h3>
+                        </a>
+                        <p class="product-description">
+                            {{pro.description}}
+                        </p>
+                        <div class="prices">
+                            {% if pro.oldPrice > 0 %}
+                            <span class="old-price">
+                                {{pro.oldPrice}} TMT
+                            </span>
+                            {% endif %}
+                            <span class="new-price">
+                                {{pro.price}} TMT
+                            </span>
+                        </div>
+                        {% comment %} <div class="rating">
+                            <span class="stars">
+                                {%if product_reviews > 0%}&#9733;{%else%}&#9734;{%endif%}
+                                {%if product_reviews > 1%}&#9733;{%else%}&#9734;{%endif%}
+                                {%if product_reviews > 2%}&#9733;{%else%}&#9734;{%endif%}
+                                {%if product_reviews > 3%}&#9733;{%else%}&#9734;{%endif%}
+                                {%if product_reviews > 4%}&#9733;{%else%}&#9734;{%endif%}
+                            </span>
+                            <span class="rating-text">{{product_reviews}}({{review_count}})</span>
+                        </div> {% endcomment %}
+                        {%if pro.new_or_not == "Taze"%}
+                        <p class="extra-description badge">Täze haryt</p>
+                        {%else%}
+                        <p class="extra-description badge" style="background: #fff;height: 20px;"> </p>
+                        {%endif%}
+                        <div class="product-footer">
+                            {% if pro.id in added_to_cart_product_ids %}
+                            {%for cart in cart%}
+                            {%if pro.id is cart.product.id %}
+                                <div class="pro-quantity">
+                                    <div class="row">
+                                        <div class="">
+                                            <button class="minus minus-cart" pid={{cart.product.id}}>-</button>
+                                            <span id="quantity">{{cart.quantity}}</span>
+                                            <button class="add plus-cart" pid={{cart.product.id}}>+</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                {%endif%}
+                            {%endfor%}
+                            {% else %}
+                                <form action="/add-to-cart" id="add_to_cart" method="get" style="width: 100%;margin-right:10px">
+                                    <input type="hidden" name="prod_id" value="{{pro.id}}">
+                                    <button type="submit" class="add-to-cart">Sebede goş</button>
+                                </form>
+                            {%endif%}
+                        </div>
+                    </div>
+                </div>
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+    {%if categoryName is not null%}
+    <script>
+        $(document).ready(function(){
+    $(".ajaxLoader").hide()
+    $("input[name='price-range']").click(function() {
+        var range = $(this).val().split('-');
+        $("#minPrice").val(range[0]);
+        $("#maxPrice").val(range[1]);
+    });
+
+    $(".filter-checkbox,#priceFilterBtn,#search-btn,#sort-form input").on('click',function(){
+        var _filterObj = {}
+        var _minPrice = $("#minPrice").val()
+        var _maxPrice = $('#maxPrice').val()
+            _filterObj.minPrice=_minPrice
+            _filterObj.maxPrice=_maxPrice
+            // var _selectedSort = $('input[name=sort]:checked', '#sort-form').val();
+            // _filterObj.selectedSort = _selectedSort;
+            
+        $(".filter-checkbox").each(function(index,ele){
+            var _filterVal=$(this).val()
+            var _filterKey=$(this).data('filter')
+            _filterObj[_filterKey]=Array.from(document.querySelectorAll('input[data-filter='+_filterKey+']:checked')
+                ).map(function(el){
+                return el.value
+            })
+        })
+        $.ajax({
+            url:'/category/{%for pro in product%}{% if forloop.first%}{{pro.category.id}}/{{pro.category.name}}{%endif%}{%endfor%}/filter-data',
+            data:_filterObj,
+            dataType:'json',
+            beforeSend:function(){
+                $(".ajaxLoader").show()
+            },
+            success:function(res){
+                console.log(res)
+                $("#filteredProducts").html(res.data)
+                $(".ajaxLoader").hide()
+            }
+        })
+    })
+})
+    </script>
+    {%else%}
+<script>
+    $(document).ready(function(){
+$(".ajaxLoader").hide()
+$("input[name='price-range']").click(function() {
+    var range = $(this).val().split('-');
+    $("#minPrice").val(range[0]);
+    $("#maxPrice").val(range[1]);
+});
+
+$(".filter-checkbox,#priceFilterBtn,#search-btn,#sort-form input").on('click',function(){
+    var _filterObj = {}
+    var _minPrice = $("#minPrice").val()
+    var _maxPrice = $('#maxPrice').val()
+        _filterObj.minPrice=_minPrice
+        _filterObj.maxPrice=_maxPrice
+    // var _selectedSort = $('input[name=sort]:checked', '#sort-form').val();
+    //         console.log(_selectedSort)
+    //         _filterObj.selectedSort = _selectedSort
+    $(".filter-checkbox").each(function(index,ele){
+        var _filterVal=$(this).val()
+        var _filterKey=$(this).data('filter')
+        _filterObj[_filterKey]=Array.from(document.querySelectorAll('input[data-filter='+_filterKey+']:checked')
+            ).map(function(el){
+            return el.value
+        })
+    })
+    $.ajax({
+        url:'/menu/{%for pro in product%}{% if forloop.first%}{{pro.category.menu.id}}/{{pro.category.menu.name}}{%endif%}{%endfor%}/filter-data',
+        data:_filterObj,
+        dataType:'json',
+        beforeSend:function(){
+            $(".ajaxLoader").show()
+        },
+        success:function(res){
+            console.log(res)
+            $("#filteredProducts").html(res.data)
+            $(".ajaxLoader").hide()
+        }
+    })
+})
+})
+</script>
+{%endif%}
+
+   <footer>{%for abous in abous%} 
+    {%if forloop.last%}
+    <div class="contact-info">
+        <a href="/">
+            <img src="" alt="">
+        </a>
+        <p>Telefon belgimiz: +993{{abous.phone}}</p>
+        <p>E-Poçtamyz: {{abous.email}} </p>
+        <p>Salgymyz: {{abous.adress}} </p>
+    </div>
+    {%endif%}
+    {%endfor%}
+    
+    <div class="customer-support">
+        <a href="/help">Kömek</a>
+        <a href="/exchange">Çalşyp bermek</a>
+        <a href="/contact">Habarlaşmak</a>
+    </div>
+
+    <div class="about-us">
+        <a href="">
+            <p>Biz hakda:{%for abous in abous%} {{abous.description}} {%endfor%}</p>
+        </a>
+    </div>
+
+    <div class="product-categories">
+        {%for men in menu%}
+            <a href="/menu/{{men.id}}/{{men.name}}">{{men.name}}</a>
+        {%endfor%}
+    </div>
+
+    <div class="shipping-and-delivery">
+        <a href="/cargofee">
+            <p>Ýol tölegleri: Siziň ýaşaýan ýeriňize eltip bermek hyzmatynyň tölegleri bu sahypada ýerleşdirilendir.</p>
+        </a>
+    </div>
+
+    <div class="social-media">
+        <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+
+    <div class="payment-options">
+        <p>Kabul edilýän töleg görnüşleri: Nagt töleg, Terminal töleg</p>
+    </div>
+
+    <div class="copyright">
+        <a href="/">
+            <img src="" alt="">
+        </a>
+        <span>&copy;2023-2024 Hemme hukuklarymyz goraglydyr</span>
+    </div>
+</footer>
+    
+    <div id="scrolltop">
+        <a class="top-button" href="#top"><i class="fas fa-arrow-up"></i> Ýokaryk</a>
+    </div>
+    
+    
+        <div class="mobile-nav ng-star-inserted">
+            <div class="mobile-nav-menu">
+                <button onclick="location='/'" id="btnhomeMenu" class="ng-star-inserted">
+                    <i class="nav-home-image"></i>
+                    Esasy
+                </button>
+                <button id="btncategoriesMenu" class="ng-star-inserted">
+                    <i class="nav-category-image" id="navCat"></i>
+                    Kategoriyalar
+                </button>
+                <button onclick="location='/wishlist'" id="btnwishlistMenu" class="ng-star-inserted">
+                    <i class="nav-wishlist-image" id="navWish"></i>
+                     Halanlarym
+                </button>
+                <button onclick="location='/cart'" id="btncartMenu" class="ng-star-inserted">
+                    <i class="nav-cart-image"></i>
+                     Sebedim
+                </button>
+                <button onclick="location='{% if user.is_authenticate%}/user/order{%else%}/login{%endif%}'" id="btnorderMenu" class="ng-star-inserted">
+                    <i class="nav-user-image"></i>
+                    {% if user.is_authenticated %}
+                    Hasabym
+                {% else %}
+                    Giriş
+                {% endif %}
+                </button>
+            </div>
+        </div>
+        <script>
+            function filter(){
+                document.querySelector('#filter_list').classList.add('active')
+                document.querySelector('#background_shadow').classList.add('active')
+            }
+            function filterClose(){
+                document.querySelector('#filter_list').classList.remove('active')
+                document.querySelector('#background_shadow').classList.remove('active')
+            }
+            $('#categoryOut').click(function(){
+                document.getElementById('catMobile').classList.remove('active')
+                document.getElementById('btncategoriesMenu').style.color ="#6f6f6f"
+                document.getElementById('navCat').classList.remove('active')
+            })
+            $('#btncategoriesMenu').click(function(){
+                document.getElementById('catMobile').classList.add('active')
+                document.getElementById('navCat').classList.add('active')
+                document.getElementById('btncategoriesMenu').style.color ="#96e6a1"
+            })
+        </script>
+<script type="text/javascript" src="{% static "js/mobileCat.js"%}"></script>
+<script type="text/javascript" src="{% static "js/scrolltotop.js"%}"></script>
+<script type="text/javascript" src="{% static "js/search.js"%}"></script>
+<script type="text/javascript" src="{% static "js/cart.js"%}"></script>
+<script type="text/javascript" src="{% static "js/wishlist.js"%}"></script>
+<script type="text/javascript" src="{% static "js/all_product_image_slide.js"%}"></script>
+</body>
+</html>

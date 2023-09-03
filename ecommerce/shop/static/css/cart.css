@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&family=Quicksand:wght@700&display=swap');
+
+.cart-box .cart-empty span::selection,
+.cart-box .cart-empty button::selection,
+.cart-box .cart a::selection,
+.cart-box div::selection,
+.cart-box .cart button::selection,
+.cart-box .cart input::selection,
+.cart-box .product-prices span::selection,
+.cart-box .product-prices button::selection{
+  -webkit-user-select: none;
+  -moz-user-select: none;
+}
+.cart-box .cart-empty .cart-empty-icon{
+    font-size: 5rem;
+    animation: changeColor 2s ease-in-out infinite;
+}
+
+.cart-box .cart-empty .cart-empty-span{
+    font-size: 2rem;
+    color: #d4fc79;
+    font-weight: 800;
+}
+
+.cart-box .cart-empty .shopping-button button{
+    background: #d4fc79;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    transition: .3s ease-in;
+}
+.cart-box .cart-empty .shopping-button button:hover{
+    background-color: #009432;
+}
+
+@keyframes changeColor {
+    0% {
+        color:  #009432;
+        transform: translateY(0);
+    }
+    50% {
+        color: #d4fc79;
+        transform: translateY(1.2rem);
+    }
+    100% {
+        color: #009432;
+        transform: translateY(0);
+    }
+}
+
+.cart-pro-list {
+    border-radius: 20px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+.pro {
+    border-radius: 20px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+.product-info{
+    height: 200px;
+}
+.product-info .brand a{
+    color: #acacac;
+    text-decoration: none;
+    font-size: 14px;
+}
+.product-info .pro-title a{
+    color: #009432;
+    text-decoration: none;
+    font-weight: 700;
+}
+.remove-cart{
+    margin-left: 100px;
+    position: absolute;
+    cursor: pointer;
+}
+.pro-img{
+    margin-top: 15px;
+}
+.pro-img img{
+    border-radius: 20px;
+}
+.product-info .pro-desc {
+    color: #acacac;
+    font-size: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 9;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    height: 135px;
+    text-overflow: ellipsis;
+}
+.pro-quantity {
+    position: relative;
+    top: -20px;
+    left: 0;
+}
+.pro-quantity button{
+    align-items: center;
+    height: 28px;
+    width: 30px;
+    border-radius: 6px;
+    border: none;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 700;
+    justify-content: center;
+    margin-top: 0;
+}
+.pro-quantity .add{
+    background: #009432;
+}
+.pro-quantity .add:hover{
+    background: #d4fc79;
+}
+.pro-quantity .minus{
+    background: #009432;
+}
+.pro-quantity .minus:hover{
+    background: #d4fc79;
+}
+.cart-pro .pro .prices .old-price{
+    font-size: 13px;
+}
+.cart-pro .pro .prices .new-price{
+    font-size: 18px;
+}
+.pro-delete{
+    margin-left: 25px;
+    margin-top: 45px;
+}
+/* .pro-delete a {
+    color: #acacac;
+    font-size: 20px;
+    transition: color .3s ease-in;
+}
+.pro-delete a:hover{
+    color: #009432;
+} */
+.product-prices {
+    height: 200px;
+    position: sticky;
+    bottom: 100%;
+    height: fit-content;
+    border-radius: 20px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.1);
+}
+.product-prices .subtotal,
+.product-prices .cargo-fee{
+    font-weight: 700;
+    font-size: 18px;
+}
+.product-prices .total {
+    color: #009432;
+    font-weight: 800;
+    font-size: 20px;
+}
+.product-prices .checkout {
+    background: #d4fc79;
+    color: #fff;
+    font-weight: 600;
+    padding: 5px;
+    width: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    transition: .3s ease-in;
+}
+
+.product-prices .checkout:hover {
+    background: #009432;
+}
+
+@media (min-width:280px) and (max-width:767px){
+    .product-info .brand a{
+        color: #acacac;
+        text-decoration: none;
+        font-size: 8px;
+    }
+    .product-info .pro-title a{
+        color: #009432;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 14px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 50px;
+        text-overflow: ellipsis;
+    }
+    .product-info .pro-desc {
+        color: #acacac;
+        font-size: 10px;
+        display: -webkit-box;
+        -webkit-line-clamp: 7;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        height: 105px;
+        text-overflow: ellipsis;
+    }
+    .quantity{
+        outline: none;
+        border: 2px solid #acacac;
+        text-align: center;
+        border-radius: 5px;
+        width: 25px;
+        margin-top: 45px;
+    }
+    .pro-quantity{
+        position: relative;
+        margin-top: 30px;
+        top: -50px;
+    }
+    .pro-quantity button{
+        align-items: center;
+        height: 28px;
+        width: 25px;
+        border-radius: 6px;
+        border: none;
+        text-align: center;
+        color: #fff;
+        font-size: 20px;
+        font-weight: 700;
+        justify-content: center;
+        margin-top: 0;
+    }
+    .pro-quantity .add{
+        background: #d4fc79;
+    }
+    .cart-pro .pro .prices {
+        position: relative;
+        top: -50px;
+        margin-bottom: -50px;
+        justify-content: center;
+    }
+    .product-prices {
+        height: 200px;
+        position: relative;
+        bottom: 0;
+    }
+    .cart-pro .pro .prices .old-price{
+        font-size: 16px;
+        margin-top: 0;
+    }
+    .cart-pro .pro .prices .new-price{
+        font-size: 20px;
+    }
+    .pro-delete{
+        margin-left: 33px;
+        margin-top: -60px;
+        z-index: 999;
+    }
+    .product-prices .subtotal,
+    .product-prices .cargo-fee{
+        margin-left: 0;
+        font-size: 14px;
+    }
+    .product-prices .total {
+        font-size: 16px;
+    }
+}
+
+@media (min-width:522px) and (max-width:575px){
+    .pro-delete{
+        margin-left: -55px;
+        margin-top: 10px;
+        z-index: 999;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px){
+    .pro-delete{
+        margin-left: 36px;
+        margin-top: 0;
+    }
+    .product-prices .subtotal,
+    .product-prices .cargo-fee{
+        margin-left: 0;
+        font-size: 14px;
+    }
+    .product-prices .total {
+        font-size: 16px;
+    }
+}
+
+@media (min-width:1000px) and (max-width:1200px){
+    .remove-cart {
+        position: absolute;
+        margin-left: 100px;
+        cursor: pointer;
+    }
+    .pro-quantity{
+        position: relative;
+        margin-top: 10px;
+        top: 0;
+    }
+    .cargo-fee .subtotal{
+        font-size: 16px;
+    }
+}

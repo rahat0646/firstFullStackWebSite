@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/header.css"%}">
+    <link rel="stylesheet" href="{% static "css/navbar.css"%}">
+    <link rel="stylesheet" href="{% static "css/banner.css"%}">
+    <link rel="stylesheet" href="{% static "css/loadingScreen.css"%}">
+    <link rel="stylesheet" href="{% static "css/product.css"%}">
+    <link rel="stylesheet" href="{% static "css/footer.css"%}">
+    <link rel="stylesheet" href="{% static "css/order.css"%}">
+    <link rel="stylesheet" href="{% static "css/help.css"%}">
+    <link rel="stylesheet" href="{% static "css/all.min.css"%}">
+    <link rel="stylesheet" href="{% static "css/slick/slick.css"%}">
+    <link rel="stylesheet" href="{% static "css/slick/slick-theme.css"%}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css"%}">
+    <script src="{% static "js/jquery-3.6.0.js"%}"></script>
+    <script src="{% static "js/slick/slick.min.js"%}"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="headerMain">
+        <div class="header">
+            <div class="headerLogo">
+                <a href="/">
+                    <img src="{% static "assets/img/obkids.png"%}" alt="">  
+                </a>
+            </div>
+            <div class="searchBar">
+                <form autocomplete="off" id="search-form" style="width: 100%;height: 100%;">
+                {% csrf_token %}
+                    <input type="text" id="search-input" placeholder="Islän zadyňyzy gözläň...">
+                    <button id="button-search"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="searchResult" id="results-box">
+                </div>
+            </div>
+            <div class="account">
+                <div class="wishlist">
+                    <a href="/wishlist">
+                        {%if wishlist.count > 0%}
+                        <div class="wishlist-count badge">{{wishlist.count}}</div>
+                        {%endif%}
+                        <i class="wishlist-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                            <g id="SVGRepo_iconCarrier"> <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                            </svg>
+                        </i>
+                        Halanlarym
+                    </a>
+                </div>
+                <div class="login">
+                    {% if user.is_authenticated %}<a href="/">{% else %}<a href="/login/">{% endif %}
+                        <i class="login-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="User / User_03">
+                            <path id="Vector" d="M18 19C18 16.7909 15.3137 15 12 15C8.68629 15 6 16.7909 6 19M12 12C9.79086 12 8 10.2091 8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8C16 10.2091 14.2091 12 12 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            </svg>
+                        </i>
+                        {% if user.is_authenticated %}
+                            Hasabym
+                        {% else %}
+                            Giriş
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="cart">
+                    <a href="/cart">
+                        {%if cart.count > 0%}
+                        <div class="cart-count badge">{{cart.count}}</div>
+                        {%endif%}
+                        <i class="cart-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 3H4.5L6.5 17H17C18.1046 17 19 17.8954 19 19C19 20.1046 18.1046 21 17 21C15.8954 21 15 20.1046 15 19M9 5H21.0001L19.0001 11M18 14H6.07141M11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </i>
+                        Sebedim
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="categoryMobile" id="catMobile">
+        <i class="categoryExit" id="categoryOut"><?xml version="1.0" encoding="utf-8"?><svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#009432"/></svg> <span>Yza</span></i>
+        <nav class="MobileMegaMenu" id="mega-menu">
+            <ul class="MobileMenu" id="menu">
+                {% for menu in menu %}
+                <li class="MobileSubMenu">
+                    <div class="HeaderSub"><a href="/menu/{{menu.id}}/{{menu.name}}" class="MobileSubMenuHeader">{{menu.name}}</a></div> <i class="arrow" menuID="{{menu.id}}" id="Arrow{{menu.id}}"><?xml version="1.0" encoding="utf-8"?><svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#000000"/></svg></i>
+                    {%for categorys in category%}
+                        {%if categorys.menu is not null and forloop.first%}
+                    <ul class="MobileCat" menuID="{{menu.id}}" id="MobCat{{menu.id}}">
+                        {%for cat in category%}
+                            {% if cat.menu.id == menu.id%}
+                        <li><a href="/category/{{cat.id}}/{{cat.name}}">{{cat.name}}</a></li>
+                            {%endif%}
+                        {%endfor%}
+                    </ul>
+                        {%endif%}
+                    {%endfor%}
+                </li>
+                {%endfor%}
+            </ul>
+        </nav>
+    </div>
+    
+    <nav class="mega-menu" id="mega-menu">
+        <ul class="menu" id="menu">
+            {% for menu in menu %}
+            <li class="has-submenu">
+                <a href="/menu/{{menu.id}}/{{menu.name}}" class="header-menu">{{menu.name}}</a>
+                {%for categorys in category%}
+                    {%if categorys.menu is not null and forloop.first%}
+                <ul class="submenu">
+                    {%for cat in category%}
+                        {% if cat.menu.id == menu.id%}
+                    <li><a href="/category/{{cat.id}}/{{cat.name}}">{{cat.name}}</a></li>
+                        {%endif%}
+                    {%endfor%}
+                </ul>
+                    {%endif%}
+                {%endfor%}
+            </li>
+            {%endfor%}
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="account-layout-container">
+            <div class="left" id="accountLayoutLeft">
+                <div data-fragment-name="AccountLayout" data-fragment-id="442c253f-5fa8-447e-bd77-145872829e39" data-gateway-service="prod-web-navigation-gateway">
+                    <div class="user-menu-close" onclick="user_menuClose()"><svg xmlns="http://www.w3.org/2000/svg"  fill="#800008" viewBox="0 0 320 512"><path d="M310.6 361.4c12.5 12.5 12.5 32.75 0 45.25C304.4 412.9 296.2 416 288 416s-16.38-3.125-22.62-9.375L160 301.3L54.63 406.6C48.38 412.9 40.19 416 32 416S15.63 412.9 9.375 406.6c-12.5-12.5-12.5-32.75 0-45.25l105.4-105.4L9.375 150.6c-12.5-12.5-12.5-32.75 0-45.25s32.75-12.5 45.25 0L160 210.8l105.4-105.4c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25l-105.4 105.4L310.6 361.4z"/></svg></div>
+                    <div id="account-layout-container">
+                        <div class="layout-wrapper">
+                            <div class="layout-header">
+                                {% if user.is_authenticated %}
+                                <h2>Hasabym</h2>
+                                {% else %}
+                                <h2></h2>
+                                {% endif %}
+                            </div>
+                            {% if user.is_authenticated %}
+                            <a class="layout-item active" href="/user/order">
+                                <div class="fas fa-box-open"></div>
+                                <span>Hemme sargytlarym</span>
+                            </a>
+                            {% endif %}
+                            <a class="layout-item active" href="/help">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><path fill="#009432" d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM11 15V17H13V15H11ZM13 13.3551C14.4457 12.9248 15.5 11.5855 15.5 10C15.5 8.067 13.933 6.5 12 6.5C10.302 6.5 8.88637 7.70919 8.56731 9.31346L10.5288 9.70577C10.6656 9.01823 11.2723 8.5 12 8.5C12.8284 8.5 13.5 9.17157 13.5 10C13.5 10.8284 12.8284 11.5 12 11.5C11.4477 11.5 11 11.9477 11 12.5V14H13V13.3551Z"></path></svg>
+                                <span>Kömek</span>
+                            </a>
+                            <a class="layout-item" href="/exchange">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><path fill="#999" d="M12.0049 22.0029C6.48204 22.0029 2.00488 17.5258 2.00488 12.0029C2.00488 6.48008 6.48204 2.00293 12.0049 2.00293C17.5277 2.00293 22.0049 6.48008 22.0049 12.0029C22.0049 17.5258 17.5277 22.0029 12.0049 22.0029ZM12.0049 9.00293H8.00488V11.0029H17.0049L12.0049 6.00293V9.00293ZM7.00488 13.0029L12.0049 18.0029V15.0029H16.0049V13.0029H7.00488Z"></path></svg>
+                                <span>Çalşyp bermek</span>
+                            </a>
+                            <a class="layout-item" href="/contact">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><path fill="#999" d="M21 16.42V19.9561C21 20.4811 20.5941 20.9167 20.0705 20.9537C19.6331 20.9846 19.2763 21 19 21C10.1634 21 3 13.8366 3 5C3 4.72371 3.01545 4.36687 3.04635 3.9295C3.08337 3.40588 3.51894 3 4.04386 3H7.5801C7.83678 3 8.05176 3.19442 8.07753 3.4498C8.10067 3.67907 8.12218 3.86314 8.14207 4.00202C8.34435 5.41472 8.75753 6.75936 9.3487 8.00303C9.44359 8.20265 9.38171 8.44159 9.20185 8.57006L7.04355 10.1118C8.35752 13.1811 10.8189 15.6425 13.8882 16.9565L15.4271 14.8019C15.5572 14.6199 15.799 14.5573 16.001 14.6532C17.2446 15.2439 18.5891 15.6566 20.0016 15.8584C20.1396 15.8782 20.3225 15.8995 20.5502 15.9225C20.8056 15.9483 21 16.1633 21 16.42Z"></path></svg>
+                                <span>Habarlaşmak</span>
+                            </a>
+                            {% if user.is_authenticated %}
+                            <a class="layout-item" href="{% url 'logout' %}">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="25" height="25"><path fill="#999" d="M5 11H13V13H5V16L0 12L5 8V11ZM3.99927 18H6.70835C8.11862 19.2447 9.97111 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C9.97111 4 8.11862 4.75527 6.70835 6H3.99927C5.82368 3.57111 8.72836 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C8.72836 22 5.82368 20.4289 3.99927 18Z"></path></svg>
+                                <span>Cykys</span>
+                            </a>
+                            {% endif %}
+                            <a class="sowdayol-assistant-wrapper" href="">
+                                <h3>Electshop Asistan-dan sora</h3>
+                                <p>7/24 soraglaryňyza jogap berer</p>
+                            </a>
+                        </div></div>
+                    </div>
+                </div>
+            <div class="right">
+                <div id="member-gw-user-information">
+                <div class="user-account-info">
+                    <div class="user-menu-bar" onclick="user_menu()"><i class="fas fa-bars"></i></div>
+                    <div class="my-account-title">Kömek</div>
+                </div>
+                <h5 class="help-accordion-title">Salam hormatly müşderi, bu ýerde internet sahypada iň köp soralýan soraglaryň jogaplary ýerleşdirilen eger-de siziň soragyňyz
+                     bu ýerde ýok bolsa siz <a href="/contact" style="color: #009432;text-decoration: underline;">habarlaşmak</a> sahypasyndan bize hat ýazyp iberip bilersiniz</h5>
+                    <div class="accordion-wrapper">
+                        {%for help in help%}
+                      <div class="accordion">
+                        <input type="radio" name="radio-a" class="accordion-input" id="check{{forloop.counter}}" {%if forloop.first%} checked {%endif%}>
+                        <label class="accordion-label" for="check{{forloop.counter}}">{{help.question}}</label>
+                        <div class="accordion-content">
+                          <p>{{help.answer}}</p>
+                        </div>
+                      </div>
+                      {%endfor%}
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        <script>
+            function user_menu(){
+                document.querySelector('#accountLayoutLeft').classList.add('active')
+            }
+            function user_menuClose(){
+                document.querySelector('#accountLayoutLeft').classList.remove('active')
+            }
+        </script>
+
+<div id="scrolltop">
+    <a class="top-button" href="#top"><i class="fas fa-arrow-up"></i> Ýokaryk</a>
+</div>
+
+
+    <div class="mobile-nav ng-star-inserted">
+        <div class="mobile-nav-menu">
+            <button onclick="location='/'" id="btnhomeMenu" class="ng-star-inserted">
+                <i class="nav-home-image"></i>
+                Home
+            </button>
+            <button id="btncategoriesMenu" class="ng-star-inserted">
+                <i class="nav-category-image" id="navCat"></i>
+                Kategoriyalar
+            </button>
+            <button onclick="location='/wishlist'" id="btnwishlistMenu" class="ng-star-inserted">
+                <i class="nav-wishlist-image" id="navWish"></i>
+                 Halanlarym
+            </button>
+            <button onclick="location='/cart'" id="btncartMenu" class="ng-star-inserted">
+                <i class="nav-cart-image"></i>
+                 Sebedim
+            </button>
+            <button onclick="location='{% if user.is_authenticate%}/login{%else%}/user/order{%endif%}'" id="btnorderMenu" class="ng-star-inserted" style="color: #96e6a1;">
+                <i class="nav-user-image active active" id="navUser"></i>
+                {% if user.is_authenticated %}
+                Hasabym
+            {% else %}
+                Giriş
+            {% endif %}
+            </button>
+        </div>
+    </div>
+    <script>
+        $('#categoryOut').click(function(){
+        document.getElementById('catMobile').classList.remove('active')
+        document.getElementById('navUser').classList.add('active')
+        document.getElementById('btnorderMenu').style.color = '#96e6a1'
+        document.getElementById('btncategoriesMenu').style.color ="#6f6f6f"
+        document.getElementById('navCat').classList.remove('active')
+    })
+    $('#btncategoriesMenu').click(function(){
+        document.getElementById('catMobile').classList.add('active')
+        document.getElementById('navUser').classList.remove('active')
+        document.getElementById('btnorderMenu').style.color = '#6f6f6f'
+        document.getElementById('navCat').classList.add('active')
+        document.getElementById('btncategoriesMenu').style.color ="#96e6a1"
+    })
+    </script>
+<script type="text/javascript" src="{% static "js/slider.js"%}"></script>
+<script type="text/javascript" src="{% static "js/mobileCat.js"%}"></script>
+<script type="text/javascript" src="{% static "js/input.js" %}"></script>
+<script type="text/javascript" src="{% static "js/search.js"%}"></script>
+<script type="text/javascript" src="{% static "js/scrolltotop.js" %}"></script>
+<script type="text/javascript" src="{% static "js/menu-bar.js" %}"></script>
+</body>
+</html>

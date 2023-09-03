@@ -1,0 +1,95 @@
+    <h2>Kategoriýa: {%for pro in data%} {%if forloop.first%} {{pro.category.name}} {%endif%} {%endfor%}</h2>
+    <h4>Netije: {{data.count}} sany haryt</h4>
+    <p class="ajaxLoader">Yuklenyar..</p>
+    {%for pro in data%}
+    <div class="product-card col-5 col-md-4 col-lg-3">
+        <div class="product-image active">
+            <a href="/product/{{pro.id}}/{{pro.brand.name}}-{{pro.productName}}">
+                <img src="/img/{{pro.image}}" alt="{{pro.brand.name}}{{pro.productName}}">
+            </a>
+        </div>
+        {% if pro.id in added_to_wishlist_product_ids %}
+        {%for wishlist in wishlist%}
+        {%if pro.id is wishlist.product.id %}
+            <a pid={{pro.id}} pname={{pro.productName}} pbname={{pro.brand.name}} class="minus-wishlist">
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg width="40px" height="40px" viewBox="0 0 24 24" fill="#96e6a1" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="SVGRepo_iconCarrier"> 
+                <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#009432" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                </svg>
+            </a>
+        {%endif%}
+        {%endfor%}
+        {%else%}
+            <a pid={{pro.id}} pname={{pro.productName}} pbname={{pro.brand.name}} class="plus-wishlist">
+                <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                <svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                <g id="SVGRepo_iconCarrier"> 
+                <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#009432" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                </svg>
+            </a>
+        {%endif%}
+        {% comment %} <span class="new-arrival">Täze haryt</span> {% endcomment %}
+        <div class="product-info">
+            <a href="/product/{{pro.id}}/{{pro.brand.name}}-{{pro.productName}}">
+                <h3 class="product-title">
+                    {{pro.brand.name}} {{pro.productName}}
+                </h3>
+            </a>
+            <p class="product-description">
+                {{pro.description}}
+            </p>
+            <div class="prices">
+                {% if pro.oldPrice > 0 %}
+                <span class="old-price">
+                    {{pro.oldPrice}} TMT
+                </span>
+                {% endif %}
+                <span class="new-price">
+                    {{pro.price}} TMT
+                </span>
+            </div>
+            {% comment %} <div class="rating">
+                <span class="stars">
+                    {%if rating_star > 0%}&#9733;{%else%}&#9734;{%endif%}
+                    {%if rating_star > 1%}&#9733;{%else%}&#9734;{%endif%}
+                    {%if rating_star > 2%}&#9733;{%else%}&#9734;{%endif%}
+                    {%if rating_star > 3%}&#9733;{%else%}&#9734;{%endif%}
+                    {%if rating_star > 4%}&#9733;{%else%}&#9734;{%endif%}
+                </span>
+                <span class="rating-text">{{rating_star}}</span>
+            </div> {% endcomment %}
+            {%if pro.new_or_not == "Taze"%}
+            <p class="extra-description badge">Täze haryt</p>
+            {%else%}
+            <p class="extra-description badge" style="background: #fff;height: 20px;"> </p>
+            {%endif%}
+            <div class="product-footer">
+                {% if pro.id in added_to_cart_product_ids %}
+            {%for cart in cart%}
+            {%if pro.id is cart.product.id %}
+                <div class="pro-quantity">
+                    <div class="row">
+                        <div class="">
+                            <button class="minus minus-cart" pid={{cart.product.id}}>-</button>
+                            <span id="quantity">{{cart.quantity}}</span>
+                            <button class="add plus-cart" pid={{cart.product.id}}>+</button>
+                        </div>
+                    </div>
+                </div>
+                {%endif%}
+            {%endfor%}
+            {% else %}
+                <form action="/add-to-cart" id="add_to_cart" method="get" style="width: 100%;margin-right:10px">
+                    <input type="hidden" name="prod_id" value="{{pro.id}}">
+                    <button type="submit" class="add-to-cart">Sebede goş</button>
+                </form>
+            {%endif%}
+            </div>
+        </div>
+    </div>
+    {%endfor%}

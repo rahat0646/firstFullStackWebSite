@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static "css/header.css"%}">
+    <link rel="stylesheet" href="{% static "css/navbar.css"%}">
+    <link rel="stylesheet" href="{% static "css/banner.css"%}">
+    <link rel="stylesheet" href="{% static "css/loadingScreen.css"%}">
+    <link rel="stylesheet" href="{% static "css/product.css"%}">
+    <link rel="stylesheet" href="{% static "css/footer.css"%}">
+    <link rel="stylesheet" href="{% static "css/all.min.css"%}">
+    <link rel="stylesheet" href="{% static "css/wishlist.css"%}">
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css"%}">
+    <script src="{% static "js/jquery-3.6.0.js"%}"></script>
+    <title>Document</title>
+</head>
+<script>$(window).on("load",function(){$("#loading-screen").fadeOut(400);});</script>
+<body>
+    <div id="loading-screen">
+    <div class="loader"><div class="cell d-0"></div><div class="cell d-1"></div><div class="cell d-2"></div><div class="cell d-1"></div><div class="cell d-2"></div><div class="cell d-2"></div><div class="cell d-3"></div><div class="cell d-3"></div><div class="cell d-4"></div></div>
+    </div>
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </symbol>
+      </svg>
+    <div class="alerts">
+        {%for message in messages%}
+    <div class="alert alert-success d-flex align-items-center" id="alertSucces" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+        <div>
+            {{message}}
+        </div>
+    </div>
+        {%endfor%}
+    </div>
+    <div class="headerMain">
+        <div class="header">
+            <div class="headerLogo">
+                <a href="/">
+                    <img src="{% static "assets/img/obkids.png"%}" alt="">  
+                </a>
+            </div>
+            <div class="searchBar">
+                <form autocomplete="off" id="search-form" style="width: 100%;height: 100%;">
+                {% csrf_token %}
+                    <input type="text" id="search-input" placeholder="Islän zadyňyzy gözläň...">
+                    <button id="button-search"><i class="fas fa-search"></i></button>
+                </form>
+                <div class="searchResult" id="results-box">
+                </div>
+            </div>
+            <div class="account">
+                <div class="wishlist">
+                    <a href="/wishlist">
+                        {%if wishlist.count > 0%}
+                        <div class="wishlist-count badge">{{wishlist.count}}</div>
+                        {%endif%}
+                        <i class="wishlist-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                            <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                            <g id="SVGRepo_iconCarrier"> <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                            </svg>
+                        </i>
+                        Halanlarym
+                    </a>
+                </div>
+                <div class="login" onmouseover="ulanyjy_maglumaty_gorkez()" onmouseleave="ulanyjy_maglumaty_yap()">
+                    {% if user.is_authenticated %}<a href="/">{% else %}<a href="/login/">{% endif %}
+                        <i class="login-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g id="User / User_03">
+                            <path id="Vector" d="M18 19C18 16.7909 15.3137 15 12 15C8.68629 15 6 16.7909 6 19M12 12C9.79086 12 8 10.2091 8 8C8 5.79086 9.79086 4 12 4C14.2091 4 16 5.79086 16 8C16 10.2091 14.2091 12 12 12Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </g>
+                            </svg>
+                        </i>
+                        {% if user.is_authenticated %}
+                            Hasabym
+                        {% else %}
+                            Giriş
+                        {% endif %}
+                    </a>
+                </div>
+                <div class="cart">
+                    <a href="/cart">
+                        {%if cart.count > 0%}
+                            <div class="cart-count badge">{{cart.count}}</div>
+                        {%endif%}
+                        <i class="cart-icon">
+                            <svg width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M2 3H4.5L6.5 17H17C18.1046 17 19 17.8954 19 19C19 20.1046 18.1046 21 17 21C15.8954 21 15 20.1046 15 19M9 5H21.0001L19.0001 11M18 14H6.07141M11 19C11 20.1046 10.1046 21 9 21C7.89543 21 7 20.1046 7 19C7 17.8954 7.89543 17 9 17C10.1046 17 11 17.8954 11 19Z" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </i>
+                        Sebedim
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="categoryMobile" id="catMobile">
+        <i class="categoryExit" id="categoryOut"><?xml version="1.0" encoding="utf-8"?><svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M14.2893 5.70708C13.8988 5.31655 13.2657 5.31655 12.8751 5.70708L7.98768 10.5993C7.20729 11.3805 7.2076 12.6463 7.98837 13.427L12.8787 18.3174C13.2693 18.7079 13.9024 18.7079 14.293 18.3174C14.6835 17.9269 14.6835 17.2937 14.293 16.9032L10.1073 12.7175C9.71678 12.327 9.71678 11.6939 10.1073 11.3033L14.2893 7.12129C14.6799 6.73077 14.6799 6.0976 14.2893 5.70708Z" fill="#009432"/></svg> <span>Yza</span></i>
+        <nav class="MobileMegaMenu" id="mega-menu">
+            <ul class="MobileMenu" id="menu">
+                {% for menu in menu %}
+                <li class="MobileSubMenu">
+                    <div class="HeaderSub"><a href="/menu/{{menu.id}}/{{menu.name}}" class="MobileSubMenuHeader">{{menu.name}}</a></div> <i class="arrow" menuID="{{menu.id}}" id="Arrow{{menu.id}}"><?xml version="1.0" encoding="utf-8"?><svg width="50px" height="50px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.70711 9.71069C5.31658 10.1012 5.31658 10.7344 5.70711 11.1249L10.5993 16.0123C11.3805 16.7927 12.6463 16.7924 13.4271 16.0117L18.3174 11.1213C18.708 10.7308 18.708 10.0976 18.3174 9.70708C17.9269 9.31655 17.2937 9.31655 16.9032 9.70708L12.7176 13.8927C12.3271 14.2833 11.6939 14.2832 11.3034 13.8927L7.12132 9.71069C6.7308 9.32016 6.09763 9.32016 5.70711 9.71069Z" fill="#000000"/></svg></i>
+                    {%for categorys in category%}
+                        {%if categorys.menu is not null and forloop.first%}
+                    <ul class="MobileCat" menuID="{{menu.id}}" id="MobCat{{menu.id}}">
+                        {%for cat in category%}
+                            {% if cat.menu.id == menu.id%}
+                        <li><a href="/category/{{cat.id}}/{{cat.name}}">{{cat.name}}</a></li>
+                            {%endif%}
+                        {%endfor%}
+                    </ul>
+                        {%endif%}
+                    {%endfor%}
+                </li>
+                {%endfor%}
+            </ul>
+        </nav>
+    </div>
+    
+    <nav class="mega-menu" id="mega-menu">
+        <ul class="menu" id="menu">
+            {% for menu in menu %}
+            <li class="has-submenu">
+                <a href="/menu/{{menu.id}}/{{menu.name}}" class="header-menu">{{menu.name}}</a>
+                {%for categorys in category%}
+                    {%if categorys.menu is not null and forloop.first%}
+                <ul class="submenu">
+                    {%for cat in category%}
+                        {% if cat.menu.id == menu.id%}
+                    <li><a href="/category/{{cat.id}}/{{cat.name}}">{{cat.name}}</a></li>
+                        {%endif%}
+                    {%endfor%}
+                </ul>
+                    {%endif%}
+                {%endfor%}
+            </li>
+            {%endfor%}
+        </ul>
+    </nav>
+
+    <div class="wishlist-box container p-3">
+        {%if wishlist%}
+            <div class="wishlistbox ml-1 ml-sm-0 pt-3 container row">
+                {% for wish in wishlist %}
+                <div class="product-list mb-3 mr-3 mr-s col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="wishlist-pro mr-0 ml-0 mr-md-3">
+                        <div class="pro row">
+                            <div class="pro-img col-4 col-lg-2 col-md-3 col-sm-4 col-xl-2">
+                                <a href="/product/{{wish.product.id}}/{{wish.product.productName}}">
+                                    <img src="/img/{{wish.product.image}}" style="border-radius: 20px;margin-top: 1px;" class="w-100 " alt="{{wish.product.brand.name}}-{{wish.product.productName}}">
+                                </a>
+                            </div>
+                            <div class="product-info col-5 col-lg-4 col-md-4 col-sm-4 col-xl-5">
+                                <div class="brand"><a href="#">{{wish.product.brand.name}}</a></div>
+                                <div class="pro-title"><a href="/product/{{wish.product.id}}/{{wish.product.productName}}">{{wish.product.productName}}</a></div>
+                                <div class="pro-desc">{{wish.product.description}}</div>
+                                {%if wish.product.new_or_not == "Taze"%}
+                                    <p class="extra-description badge">Täze haryt</p>
+                                {%else%}
+                                    <p class="extra-description badge" style="background: #fff;height: 20px;"></p>
+                                {%endif%}
+                                {% comment %} <div class="rating">
+                                    <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+                                    <span class="rating-text">4.0</span>
+                                </div> {% endcomment %}
+                            </div>
+                            <div class="prices col-3 col-sm-3 col-md-3 col-xl-4">
+                                {% if wish.product.oldPrice > 0 %}
+                                <div class="old-price">{{wish.product.oldPrice}} TMT</div>
+                                {% endif %}
+                                <div class="new-price">{{wish.product.price}} TMT</div>
+                                <div class="wishlist-add">
+                                    <a pid={{wish.product.id}} class="minus-wishlist">
+                                        <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+                                        <svg width="40px" height="40px" viewBox="0 0 24 24" fill="#96e6a1" xmlns="http://www.w3.org/2000/svg">
+                                        <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                                        <g id="SVGRepo_iconCarrier"> 
+                                        <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#009432" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                                        </svg>
+                                    </a>
+                                </div> 
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {%else%}
+            <div class="wishlist-empty container">
+            <div class="wishlist-empty-span">
+                <span>Siziň halanlaryňyz boş!</span>
+            </div>
+            <div class="wishlist-empty-icon">
+                <i class="wishlist-icon">
+                    <svg width="80px" height="80px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"/>
+                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"/>
+                    <g id="SVGRepo_iconCarrier"> <path d="M12 20L4.3314 12.0474C3.47892 11.1633 3 9.96429 3 8.71405C3 6.11055 5.03517 4 7.54569 4C8.75128 4 9.90749 4.49666 10.76 5.38071L12 6.66667L13.24 5.38071C14.0925 4.49666 15.2487 4 16.4543 4C18.9648 4 21 6.11055 21 8.71405C21 9.96429 20.5211 11.1633 19.6686 12.0474L15.8343 16.0237" stroke="#000000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/> </g>
+                    </svg>
+                </i>
+            </div>
+            </div>
+            {%endif%}
+    </div>
+
+<footer>
+    {%for abous in abous%} 
+    {%if forloop.last%}
+    <div class="contact-info">
+        <a href="/">
+            <img src="" alt="">
+        </a>
+        <p>Telefon belgimiz: +993{{abous.phone}}</p>
+        <p>E-Poçtamyz: {{abous.email}} </p>
+        <p>Salgymyz: {{abous.adress}} </p>
+    </div>
+    {%endif%}
+    {%endfor%}
+    
+    <div class="customer-support">
+        <a href="/help">Kömek</a>
+        <a href="/exchange">Çalşyp bermek</a>
+        <a href="/contact">Habarlaşmak</a>
+    </div>
+
+    <div class="about-us">
+        <a href="">
+            <p>Biz hakda:{%for abous in abous%} {{abous.description}} {%endfor%}</p>
+        </a>
+    </div>
+
+    <div class="product-categories">
+        {%for men in menu%}
+            <a href="/menu/{{men.id}}/{{men.name}}">{{men.name}}</a>
+        {%endfor%}
+    </div>
+
+    <div class="shipping-and-delivery">
+        <a href="/cargofee">
+            <p>Ýol tölegleri: Siziň ýaşaýan ýeriňize eltip bermek hyzmatynyň tölegleri bu sahypada ýerleşdirilendir.</p>
+        </a>
+    </div>
+
+    <div class="social-media">
+        <a href="#"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#"><i class="fab fa-instagram"></i> Instagram</a>
+    </div>
+
+    <div class="payment-options">
+        <p>Kabul edilýän töleg görnüşleri: Nagt töleg, Terminal töleg</p>
+    </div>
+
+    <div class="copyright">
+        <a href="/">
+            <img src="" alt="">
+        </a>
+        <span>&copy;2023-2024 Hemme hukuklarymyz goraglydyr</span>
+    </div>
+</footer>
+
+<div id="scrolltop">
+    <a class="top-button" href="#top"><i class="fas fa-arrow-up"></i> Ýokaryk</a>
+</div>
+
+
+    <div class="mobile-nav ng-star-inserted">
+        <div class="mobile-nav-menu">
+            <button onclick="location='/'" id="btnhomeMenu" class="ng-star-inserted">
+                <i class="nav-home-image"></i>
+                Home
+            </button>
+            <button id="btncategoriesMenu" class="ng-star-inserted">
+                <i class="nav-category-image" id="navCat"></i>
+                Kategoriyalar
+            </button>
+            <button onclick="location='/wishlist'" id="btnwishlistMenu" class="ng-star-inserted" style="color: #96e6a1;">
+                <i class="nav-wishlist-image active" id="navWish"></i>
+                 Halanlarym
+            </button>
+            <button onclick="location='/cart'" id="btncartMenu" class="ng-star-inserted">
+                <i class="nav-cart-image"></i>
+                 Sebedim
+            </button>
+            <button onclick="location='{% if user.is_authenticate%}/login{%else%}/user/order{%endif%}'" id="btnorderMenu" class="ng-star-inserted">
+                <i class="nav-user-image"></i>
+                {% if user.is_authenticated %}
+                Hasabym
+            {% else %}
+                Giriş
+            {% endif %}
+            </button>
+        </div>
+    </div>
+    <script>
+        $('.minus-wishlist').click(function(){
+                var id=$(this).attr("pid").toString()
+                $.ajax({
+                    type:'GET',
+                    url:'/minuswishlist',
+                    data:{
+                        prod_id:id
+                    },
+                    success:function(data){
+                        window.location.href = `/wishlist/`
+                    }
+                })
+            })
+        $('#categoryOut').click(function(){
+            document.getElementById('catMobile').classList.remove('active')
+            document.getElementById('navWish').classList.add('active')
+            document.getElementById('btnwishlistMenu').style.color = '#96e6a1'
+            document.getElementById('btncategoriesMenu').style.color ="#6f6f6f"
+            document.getElementById('navCat').classList.remove('active')
+        })
+        $('#btncategoriesMenu').click(function(){
+            document.getElementById('catMobile').classList.add('active')
+            document.getElementById('navWish').classList.remove('active')
+            document.getElementById('btnwishlistMenu').style.color = '#6f6f6f'
+            document.getElementById('navCat').classList.add('active')
+            document.getElementById('btncategoriesMenu').style.color ="#96e6a1"
+        })
+    </script>
+<script type="text/javascript" src="{% static "js/mobileCat.js"%}"></script>
+<script type="text/javascript" src="{% static "js/scrolltotop.js"%}"></script>
+<script type="text/javascript" src="{% static "js/search.js"%}"></script>
+</body>
+</html>
